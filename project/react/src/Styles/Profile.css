@@ -1,0 +1,59 @@
+.userProfile{
+ width: 61%;
+}
+.profileCon{
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+.profileCon label{
+    color: var(--text-color);
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+}
+.profileCon form{
+    display: flex;
+    gap: 10px;
+}
+.profileCon img{
+    width: 30%;
+}
+.profileInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.profileName{
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+.profileInfo button{
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  width: 80px;
+  background-color: var(--text-color);
+  
+  cursor: pointer;
+}
+.btns{
+    display: flex;
+    gap: 10px;
+}
+.btns button{
+    font-size: 15px;
+}
+.activity{
+    display: flex;
+    gap: 40px;
+}
+.activity p{
+    font-size: 18px;
+}
+.bio{
+    color: var(--text-color);
+    font-size: 17px;
+}
