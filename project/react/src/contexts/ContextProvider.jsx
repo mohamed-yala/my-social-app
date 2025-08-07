@@ -3,13 +3,19 @@ import React, { createContext, useContext, useState } from 'react'
 const stateContext=createContext({
     user: null,
     token: null,
+    toggle:false,
+    move:null,
     setUser: ()=>{},
-    setToken: ()=>{}
+    setToken: ()=>{},
+    setToggle:()=>{},
+    setMove:()=>{}
 })
 
 function ContextProvider({children}) {
     const [user,_setUser]=useState(JSON.parse(localStorage.getItem('user')))
     const [token,_setToken]=useState(localStorage.getItem('ACCESS_TOKEN'))
+    const [toggle,setToggle]=useState(false)
+    const [move,_setMove]=useState(localStorage.getItem('move'))
                                
     const setToken=(token)=>{
         _setToken(token)
@@ -29,8 +35,21 @@ function ContextProvider({children}) {
       }
     }
 
+    const setMove=(elem)=>{
+      _setMove(elem)
+       if(elem){
+        localStorage.setItem('move',elem)
+      }else{
+        localStorage.removeItem('move')
+      }
+    }
+    
+    
+
+  
+  
   return (
-    <stateContext.Provider value={{user,token,setUser,setToken}}>
+    <stateContext.Provider value={{user,token,toggle,move,setUser,setToken,setToggle,setMove}}>
        {children}
     </stateContext.Provider>
   )

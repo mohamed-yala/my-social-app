@@ -12,7 +12,7 @@ function Post() {
          </div>
           
          <div className='description'>
-            fuck this
+            hello
          </div>
 
          <div className='photo'>

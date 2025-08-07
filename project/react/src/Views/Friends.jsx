@@ -69,7 +69,7 @@ function Friends() {
             <p>Mohamed Yala</p>
          </div>
             <button className='btnn'>
-               <span class="span-mother">
+               <span className="span-mother">
                  <span>F</span>
                  <span>o</span>
                  <span>l</span>
@@ -77,7 +77,7 @@ function Friends() {
                  <span>o</span>
                  <span>w</span>
                </span>
-               <span class="span-mother2">
+               <span className="span-mother2">
                  <span>F</span>
                  <span>o</span>
                  <span>l</span>

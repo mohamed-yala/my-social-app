@@ -2,9 +2,14 @@ import React from 'react'
 import '../Styles/Profile.css'
 import { useStateContext } from '../contexts/ContextProvider'
 
+
 function Profile() {
 
-  const {user}=useStateContext()
+  const {user,setMove,setToggle}=useStateContext()
+  const handleEdit=(e)=>{
+    setToggle(true)
+    setMove(e.target.dataset.action)
+  }
 
   return (
     <div className='userProfile container'>
@@ -18,7 +23,7 @@ function Profile() {
             
             <div className='btns'>
                 <button>Edit</button>
-                <button>Post</button>
+                <button data-action='post' onClick={handleEdit}>Post</button>
             </div>
 
             <div className='activity'>
@@ -48,7 +53,7 @@ function Profile() {
          </div>
 
        </div>
-
+        
     </div>
   )
 }
