@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,7 @@ Route::post('/login',[AuthController::class,'login']);
 
 Route::post('/logout',[AuthController::class,'logout'])->middleware('auth:sanctum');
 Route::post('/signup',[AuthController::class,'signup']);
+
+Route::post('/post',[PostController::class,'createPost'])->middleware('auth:sanctum','throttle:10,1');
+Route::get('/userPost',[PostController::class,'getPosts'])->middleware('auth:sanctum');
+Route::get('homePosts',[PostController::class,'getAllPosts'])->middleware('auth:sanctum');

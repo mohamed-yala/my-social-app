@@ -23,7 +23,7 @@ class postRequest extends FormRequest
     {
         return [
             'description'=>'nullable|required_without:picture',
-            'picture'=>'nullable|required_without:description|image|max:2048'
+            'picture'=>'nullable|required_without:description|image|mimes:jpg,jpeg,png,webp|max:2048'
         ];
     }
 }

@@ -1,15 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../Styles/Profile.css'
 import { useStateContext } from '../contexts/ContextProvider'
+import Post from './Post'
+import axiosClient from '../axios-client'
 
 
 function Profile() {
+
+  const [posts,setPosts]=useState([])
 
   const {user,setMove,setToggle}=useStateContext()
   const handleEdit=(e)=>{
     setToggle(true)
     setMove(e.target.dataset.action)
   }
+
+  useEffect(()=>{
+    axiosClient.get('/userPost')
+    .then(({data})=>{
+     setPosts(data.data)
+     
+    
+    })
+  },[])
 
   return (
     <div className='userProfile container'>
@@ -37,12 +50,12 @@ function Profile() {
             </div>
 
          <form>
-                <label class="radio-container">Public
+                <label className="radio-container">Public
                  <input type="radio" name="choice" />
                  <span class="checkmark"></span>
               </label>
 
-              <label class="radio-container">Private
+              <label className="radio-container">Private
                   <input type="radio" name="choice"/>
                   <span class="checkmark"></span>
              </label>
@@ -53,6 +66,9 @@ function Profile() {
          </div>
 
        </div>
+      {posts.map((elem)=>(
+        <Post key={elem.id} description={elem.description} image={elem.picture}/>
+      ))}
         
     </div>
   )

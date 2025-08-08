@@ -1,6 +1,23 @@
 .userProfile{
  width: 61%;
+ overflow-y: auto;
 }
+
+
+.userProfile::-webkit-scrollbar {
+  display: none;
+}
+
+
+.userProfile {
+  scrollbar-width: none;
+}
+
+
+.userProfile {
+  -ms-overflow-style: none;
+}
+
 .profileCon{
     display: flex;
     gap: 40px;
