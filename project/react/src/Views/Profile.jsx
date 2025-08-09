@@ -6,8 +6,9 @@ import axiosClient from '../axios-client'
 
 
 function Profile() {
-
+  
   const [posts,setPosts]=useState([])
+  const [likedPosts,setLikedPosts]=useState([])
 
   const {user,setMove,setToggle}=useStateContext()
   const handleEdit=(e)=>{
@@ -19,8 +20,10 @@ function Profile() {
     axiosClient.get('/userPost')
     .then(({data})=>{
      setPosts(data.data)
-     
-    
+    })
+    axiosClient.get(`/likedPosts`)
+    .then(({data})=>{
+     setLikedPosts(data.data)
     })
   },[])
 
@@ -67,7 +70,7 @@ function Profile() {
 
        </div>
       {posts.map((elem)=>(
-        <Post key={elem.id} description={elem.description} image={elem.picture}/>
+        <Post key={elem.id} post={elem} likedPosts={likedPosts}/>
       ))}
         
     </div>

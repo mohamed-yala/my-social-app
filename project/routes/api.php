@@ -27,4 +27,6 @@ Route::post('/signup',[AuthController::class,'signup']);
 
 Route::post('/post',[PostController::class,'createPost'])->middleware('auth:sanctum','throttle:10,1');
 Route::get('/userPost',[PostController::class,'getPosts'])->middleware('auth:sanctum');
-Route::get('homePosts',[PostController::class,'getAllPosts'])->middleware('auth:sanctum');
+Route::get('/homePosts',[PostController::class,'getAllPosts'])->middleware('auth:sanctum');
+Route::patch('/like/{id}',[PostController::class,'like'])->middleware('auth:sanctum');
+Route::get('/likedPosts',[PostController::class,'getLikedPosts'])->middleware('auth:sanctum');
