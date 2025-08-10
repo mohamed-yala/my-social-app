@@ -1,29 +1,32 @@
 import React, { useState,useEffect, useRef } from 'react'
-import {faHeart} from '@fortawesome/free-regular-svg-icons'
+import {faHeart as heart} from '@fortawesome/free-regular-svg-icons'
+import {faHeart as fullHeart} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faComment} from '@fortawesome/free-regular-svg-icons'
 import axiosClient from '../axios-client'
-function Post({post,likedPosts}) {
+import { useStateContext } from '../contexts/ContextProvider'
+function Post({post,liked}) {
 
-   const [clicked,setClicked]=useState(JSON.parse(localStorage.getItem('clicked')))
+  const {setToggle,setMove,setPost}=useStateContext()
+
+   const [clicked,setClicked]=useState(!liked)
+   
    const [nblikes,setLikes]=useState(post.likes)
   
-   useEffect(()=>{
-      if(likedPosts.includes(post.id) && !clicked){
-      setClicked(true)
-      localStorage.setItem('clicked',JSON.stringify(true))
-    }
-   },[])
+   const openCmnts=(e)=>{
+     setToggle(true)
+     setMove(e.target.dataset.action)
+     setPost(post.id)
+   }
+   
    
   const addLike=()=>{
-    if(!clicked){
+    if(clicked){
     setLikes(prev=>prev+1)
-    setClicked(true)
-    localStorage.setItem('clicked',JSON.stringify(true))
+    setClicked(!clicked)
     }else{
       setLikes(prev=>prev-1)
-      setClicked(false)
-      localStorage.setItem('clicked',JSON.stringify(false))
+      setClicked(!clicked)
     }
     axiosClient.patch(`/like/${post.id}`)
   }
@@ -39,15 +42,15 @@ function Post({post,likedPosts}) {
          <div className='description'>
             {post.description}
          </div>
-
+  
          <div className='photo'>
              <img src={`${import.meta.env.VITE_API_BASE_URL}/storage/${post.picture}`}/>
          </div>
-
+    
          <div className='features'>
-          <FontAwesomeIcon onClick={addLike} className='icon postIcon' icon={faHeart}/>
+          <FontAwesomeIcon onClick={addLike} className='icon postIcon' icon={clicked ? heart : fullHeart}/>
           <p >{nblikes}</p>
-          <FontAwesomeIcon className='icon postIcon' icon={faComment}/>
+          <FontAwesomeIcon data-action='comment' onClick={openCmnts} className='icon postIcon' icon={faComment}/>
           <p>{post.comments}</p>
          </div>
         

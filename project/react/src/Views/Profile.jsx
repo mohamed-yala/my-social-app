@@ -17,14 +17,14 @@ function Profile() {
   }
 
   useEffect(()=>{
-    axiosClient.get('/userPost')
-    .then(({data})=>{
-     setPosts(data.data)
-    })
-    axiosClient.get(`/likedPosts`)
-    .then(({data})=>{
-     setLikedPosts(data.data)
-    })
+    Promise.all([
+    axiosClient.get('/userPost'),
+    axiosClient.get('/likedPosts')
+  ]).then(([postsRes, likedRes]) => {
+    
+    setPosts(postsRes.data.data);
+    setLikedPosts(likedRes.data.data);
+  });
   },[])
 
   return (
@@ -70,7 +70,7 @@ function Profile() {
 
        </div>
       {posts.map((elem)=>(
-        <Post key={elem.id} post={elem} likedPosts={likedPosts}/>
+        <Post key={elem.id} post={elem} liked={likedPosts.includes(elem.id)? true:false}/>
       ))}
         
     </div>

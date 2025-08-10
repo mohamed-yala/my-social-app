@@ -4,8 +4,7 @@
   --other:#D8D5DB;
 }
 
-
-.addPost{
+.add{
     background-color:var(--main-color);
     top: 0;
     left: 0;
@@ -19,10 +18,13 @@
     justify-content: center;
 
 }
-.addPost form{
+
+
+
+.postForm{
     display: flex;
     flex-direction: column;
-   align-items: start;
+    align-items: start;
     background-color:  var(--main-color);
     border: 2px solid var(--other);
     border-radius: 10px;
@@ -55,7 +57,7 @@
   cursor: pointer;
   font-size: 13px;
 }
-.addPost textarea{
+.add textarea{
     outline: none;
     width: 100%;
     resize: none;
@@ -64,7 +66,7 @@
     border-radius: 10px;
     height: 100px !important;
 }
-.addPost button{
+.add button{
   margin: 0 auto;
   padding: 12px;
   border-radius: 20px;
@@ -76,7 +78,7 @@
   cursor: pointer;
 }
 
-.addPost button:hover{
+.add button:hover{
   background-color: var(--other);
   width: 90%;
 }

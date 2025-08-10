@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Responder;
 use App\Http\Requests\postRequest;
+use App\Models\Comment;
 use App\Models\Like;
 use App\Models\Post;
 use GrahamCampbell\ResultType\Success;
@@ -57,6 +58,26 @@ class PostController extends Controller
      $user=$request->user();
      $data=Like::whereBelongsTo($user,'user')->pluck('post_id');
      return Responder::success($data,'success',200);
+   }
+
+   public function addComment(Request $request,$id){
+
+    $data=$request->validated();
+    $user=$request->user();
+    $post=Post::findOrFail($id);
+   $comment = $user->comment()->create([
+      'text'=>$data['text'],
+      'post_id'=>$post->id
+    ]);
+    $comment->load('user');
+
+    return Responder::success($comment,'success',201);
+   }
+
+   public function getComments($id){
+    $post=Post::findOrFail($id);
+    $comments=$post->comment()->with('user')->get();
+    return Responder::success($comments,'success',200);
    }
 
 

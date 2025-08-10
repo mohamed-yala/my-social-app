@@ -4,6 +4,7 @@ import Navbar from '../Views/Navbar'
 import Friends from '../Views/Friends'
 import { useStateContext } from '../contexts/ContextProvider'
 import AddPost from '../Views/AddPost'
+import AddComment from '../Views/AddComment'
 
 
 function DefaultLayout() {
@@ -24,6 +25,7 @@ function DefaultLayout() {
       <Friends/>
 
       {toggle && move==='post' && <AddPost/>}
+      {toggle && move==='comment' && <AddComment/>} 
 
     </div>
   )

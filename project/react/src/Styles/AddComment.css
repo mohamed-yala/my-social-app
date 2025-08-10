@@ -1,0 +1,96 @@
+.addcomment{
+    background-color:var(--main-color);
+    left: 0;
+    right: 0;
+   height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.commentHeader{
+     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;  
+    margin-bottom: 3px;
+}
+
+.cmntsCon{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    background-color:  var(--main-color);
+    border: 2px solid var(--other);
+    border-radius: 10px;
+    padding: 20px;
+    width: 30%;
+    height: 80%;
+}
+
+
+
+.commentHeader p{
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+.cmnts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    overflow-y: scroll;
+    flex-grow: 1;
+    
+   
+}
+
+.cmnt{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+.cmnt p{
+    word-break: break-word;
+  overflow-wrap: anywhere;
+}
+.cmnt span{
+    font-weight: bold;
+}
+
+.cmnt-img{
+    width: 30px;
+}
+.cmntForm{
+    width: 100%;
+    padding-top: 10px;
+  
+}
+.cmntForm input{
+  padding: 12px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  width: 100%;
+  background-color: var(--other);
+}
+
+
+.cmnts::-webkit-scrollbar {
+  display: none;
+}
+
+
+.cmnts {
+  scrollbar-width: none;
+}
+
+
+.cmnts {
+  -ms-overflow-style: none;
+}

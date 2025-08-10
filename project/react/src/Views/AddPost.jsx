@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import '../Styles/AddPost.css'
+import '../index.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { useStateContext } from '../contexts/ContextProvider'
@@ -11,7 +12,7 @@ function AddPost() {
   const descriptionRef=useRef()
  
    const {setMove,setToggle}=useStateContext()
-
+  
    const removeForm=()=>{
     setToggle(false)
     setMove(null)
@@ -30,8 +31,8 @@ function AddPost() {
    }
 
   return (
-    <div className='addPost'>
-    <form onSubmit={handleSubmit}  encType='multipart/form-data'>
+    <div className='add'>
+    <form className='postForm' onSubmit={handleSubmit}  encType='multipart/form-data'>
         <div className='postHeader'>
           <p>Post</p>
           <FontAwesomeIcon onClick={removeForm} className='xmark' icon={faXmark}/>

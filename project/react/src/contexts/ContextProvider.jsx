@@ -5,10 +5,12 @@ const stateContext=createContext({
     token: null,
     toggle:false,
     move:null,
+    post_id:null,
     setUser: ()=>{},
     setToken: ()=>{},
     setToggle:()=>{},
-    setMove:()=>{}
+    setMove:()=>{},
+    setPost:()=>{}
 })
 
 function ContextProvider({children}) {
@@ -16,6 +18,8 @@ function ContextProvider({children}) {
     const [token,_setToken]=useState(localStorage.getItem('ACCESS_TOKEN'))
     const [toggle,setToggle]=useState(false)
     const [move,_setMove]=useState(localStorage.getItem('move'))
+    const [post_id,setPost]=useState(null)
+    
                                
     const setToken=(token)=>{
         _setToken(token)
