@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Responder;
+use App\Http\Requests\CommentRequest;
 use App\Http\Requests\postRequest;
 use App\Models\Comment;
 use App\Models\Like;
@@ -23,11 +24,11 @@ class PostController extends Controller
 
    public function getPosts(Request $request){
       $user=$request->user();
-      $data=$user->post()->get();
+      $data=$user->post()->with('user')->cursorPaginate(5);
       return Responder::success($data,'success',200);
    }
    public function getAllPosts(){
-      $data=Post::orderBy('created_at','desc')->get();
+      $data=Post::with('user')->orderBy('created_at','desc')->cursorPaginate(5);
       return Responder::success($data,'success',200);
    }
 
@@ -60,15 +61,16 @@ class PostController extends Controller
      return Responder::success($data,'success',200);
    }
 
-   public function addComment(Request $request,$id){
+   public function addComment(CommentRequest $request,$id){
 
     $data=$request->validated();
     $user=$request->user();
     $post=Post::findOrFail($id);
    $comment = $user->comment()->create([
       'text'=>$data['text'],
-      'post_id'=>$post->id
+      'post_id'=>$id
     ]);
+    $post->increment('comments');
     $comment->load('user');
 
     return Responder::success($comment,'success',201);
@@ -77,7 +79,7 @@ class PostController extends Controller
    public function getComments($id){
     $post=Post::findOrFail($id);
     $comments=$post->comment()->with('user')->get();
-    return Responder::success($comments,'success',200);
+    return Responder::success(['post'=>$post,'comments'=>$comments],'success',200);
    }
 
 

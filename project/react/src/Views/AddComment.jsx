@@ -13,7 +13,7 @@ function AddComment() {
  const {user,setMove,setToggle,post_id}=useStateContext()
 
     const commentRef=useRef()
-    const [comment,setComment]=useState(null)
+   
     const [comments,setComments]=useState([])
 
      const removeCmntForm=()=>{
@@ -22,9 +22,10 @@ function AddComment() {
     }
 
     useEffect(()=>{
+      
       axiosClient.get(`/comments/${post_id}`)
       .then(({data})=>{
-        setComments(data.data)
+        setComments(data.data.comments) 
       })
     },[])
 
@@ -33,12 +34,13 @@ function AddComment() {
         const payload={
             'text':commentRef.current.value
         }
-        
+      
       
        axiosClient.post(`/comment/${post_id}`,payload)
        .then(({data})=>{
-        setComment(data.data)
         setComments([...comments,data.data])
+        commentRef.current.value=''
+        
        })
 
       }
@@ -60,9 +62,9 @@ function AddComment() {
 
          
          {comments.map((elem)=>(
-           <div className='cmnt'>
+           <div key={elem.id} className='cmnt'>
             <img className='cmnt-img' src='/assets/847969.png'/> 
-            <p><span>{elem.name} </span>elem.text</p>
+            <p><span>{elem.user.name} </span>{elem.text}</p>
          </div>
          ))}
           

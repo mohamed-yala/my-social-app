@@ -31,4 +31,4 @@ Route::get('/homePosts',[PostController::class,'getAllPosts'])->middleware('auth
 Route::patch('/like/{id}',[PostController::class,'like'])->middleware('auth:sanctum');
 Route::get('/likedPosts',[PostController::class,'getLikedPosts'])->middleware('auth:sanctum');
 Route::post('/comment/{id}',[PostController::class,'addComment'])->middleware('auth:sanctum');
-Route::post('/comments/{id}',[PostController::class,'getComments'])->middleware('auth:sanctum');
+Route::get('/comments/{id}',[PostController::class,'getComments'])->middleware('auth:sanctum');

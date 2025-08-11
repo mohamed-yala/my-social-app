@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, use, useContext, useState } from 'react'
 
 const stateContext=createContext({
     user: null,
@@ -6,11 +6,13 @@ const stateContext=createContext({
     toggle:false,
     move:null,
     post_id:null,
+    nbCmnts:null,
     setUser: ()=>{},
     setToken: ()=>{},
     setToggle:()=>{},
     setMove:()=>{},
-    setPost:()=>{}
+    setPostId:()=>{},
+    setNbCmnts:()=>{}
 })
 
 function ContextProvider({children}) {
@@ -18,7 +20,9 @@ function ContextProvider({children}) {
     const [token,_setToken]=useState(localStorage.getItem('ACCESS_TOKEN'))
     const [toggle,setToggle]=useState(false)
     const [move,_setMove]=useState(localStorage.getItem('move'))
-    const [post_id,setPost]=useState(null)
+    const [post_id,setPostId]=useState(null)
+    const [nbCmnts,setNbCmnts]=useState(null)
+
     
                                
     const setToken=(token)=>{
@@ -53,7 +57,7 @@ function ContextProvider({children}) {
   
   
   return (
-    <stateContext.Provider value={{user,token,toggle,move,setUser,setToken,setToggle,setMove}}>
+    <stateContext.Provider value={{user,token,toggle,move,post_id,nbCmnts,setUser,setToken,setToggle,setMove,setPostId,setNbCmnts}}>
        {children}
     </stateContext.Provider>
   )

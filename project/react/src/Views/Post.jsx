@@ -7,16 +7,17 @@ import axiosClient from '../axios-client'
 import { useStateContext } from '../contexts/ContextProvider'
 function Post({post,liked}) {
 
-  const {setToggle,setMove,setPost}=useStateContext()
-
+  const {setToggle,setMove,setPostId}=useStateContext()
+  
    const [clicked,setClicked]=useState(!liked)
-   
+
    const [nblikes,setLikes]=useState(post.likes)
+   
   
    const openCmnts=(e)=>{
      setToggle(true)
      setMove(e.target.dataset.action)
-     setPost(post.id)
+     setPostId(post.id)
    }
    
    
@@ -36,7 +37,7 @@ function Post({post,liked}) {
         
         <div className='poster'>
             <img className='profile-img' src='/assets/847969.png'/> 
-            <p>Mohamed Yala</p>
+            <p>{post.user.name}</p>
          </div>
           
          <div className='description'>

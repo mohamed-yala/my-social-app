@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+   public $timestamps=false;
+
     protected $fillable=[
-        'text'
+        'text',
+        'post_id'
     ];
      
     public function post(){
