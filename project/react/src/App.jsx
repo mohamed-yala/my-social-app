@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from 'react'
+import { use, useEffect, useRef, useState } from 'react'
 import Post from './Views/Post'
 import axiosClient from './axios-client'
 
@@ -8,34 +8,56 @@ function App() {
 
   const [posts,setPosts]=useState([])
   const [likedPosts,setLikedPosts]=useState([])
-  const [scroll,setScroll]=useState(window.scrollY)
+  const container=useRef()
+  
+  const cursor=useRef(null)
 
- 
-  useEffect(()=>{
+  const fetchMore=()=>{
     
-    const handleScroll=()=>{
-      setScroll(window.scrollY)
-      console.log(window.scrollY)
+    Promise.all([
+    axiosClient.get('/homePosts',{
+      params:{cursor:cursor.current}
+    }),
+    axiosClient.get('/likedPosts')
+  ]).then(([postsRes, likedRes]) => {
+  
+    cursor.current=postsRes.data.data.next_cursor
+    setPosts(prevPosts=>[...prevPosts,...postsRes.data.data.data])
+    setLikedPosts(likedRes.data.data);
+    
+  })
+  }
+ 
+  
+
+  useEffect(()=>{
+
+    const el=container.current
+     const handleScroll=()=>{
+      if(el.scrollHeight<=el.scrollTop+el.clientHeight+5 && cursor.current){
+      fetchMore()
+     }
     }
-    window.addEventListener('scroll',handleScroll)
+    
+    el.addEventListener('scroll',handleScroll)
 
    Promise.all([
     axiosClient.get('/homePosts'),
     axiosClient.get('/likedPosts')
   ]).then(([postsRes, likedRes]) => {
-    
+   
     setPosts(postsRes.data.data.data);
-    console.log(postsRes.data.data.data)
+    cursor.current=postsRes.data.data.next_cursor
     setLikedPosts(likedRes.data.data);
   });
-
+    
   return ()=>{
-    window.removeEventListener('scroll',handleScroll)
+    el.removeEventListener('scroll',handleScroll)
   }
   },[])
 
   return (
-    <div className='app container'>
+    <div ref={container} className='app container'>
       <input placeholder='search'/>
       {posts.map((elem)=>(
         <Post key={elem.id} post={elem} liked={likedPosts.includes(elem.id)? true:false} />

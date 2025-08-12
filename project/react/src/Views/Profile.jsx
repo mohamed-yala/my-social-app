@@ -20,9 +20,9 @@ function Profile() {
     Promise.all([
     axiosClient.get('/userPost'),
     axiosClient.get('/likedPosts')
-  ]).then(([postsRes, likedRes]) => {
-    
-    setPosts(postsRes.data.data);
+  ]).then(([postsRes, likedRes]) => {  
+    setPosts(postsRes.data.data.data);
+    console.log(postsRes.data.data.data)
     setLikedPosts(likedRes.data.data);
   });
   },[])

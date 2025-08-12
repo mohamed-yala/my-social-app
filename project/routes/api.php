@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\followerController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +34,5 @@ Route::patch('/like/{id}',[PostController::class,'like'])->middleware('auth:sanc
 Route::get('/likedPosts',[PostController::class,'getLikedPosts'])->middleware('auth:sanctum');
 Route::post('/comment/{id}',[PostController::class,'addComment'])->middleware('auth:sanctum');
 Route::get('/comments/{id}',[PostController::class,'getComments'])->middleware('auth:sanctum');
+Route::get('/users',[UserController::class,'getUsers'])->middleware('auth:sanctum');
+Route::post('/follower/{id}',[followerController::class,'follow'])->middleware('auth:sanctum');

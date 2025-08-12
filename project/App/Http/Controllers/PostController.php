@@ -27,7 +27,7 @@ class PostController extends Controller
       $data=$user->post()->with('user')->cursorPaginate(5);
       return Responder::success($data,'success',200);
    }
-   public function getAllPosts(){
+   public function getAllPosts(Request $request){
       $data=Post::with('user')->orderBy('created_at','desc')->cursorPaginate(5);
       return Responder::success($data,'success',200);
    }

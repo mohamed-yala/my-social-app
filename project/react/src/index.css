@@ -189,6 +189,7 @@ border-radius: 50%;
  border-left:1px solid var(--other);
  padding-top: 20px;
  gap: 5px;
+ overflow-y: scroll;
  
 }
 
@@ -311,7 +312,7 @@ border-radius: 50%;
 
 .fr{
   width: 100%;
-  padding: 5px 30px;
+  padding: 23px 30px;
 
 }
 .post{
@@ -347,17 +348,17 @@ border-radius: 50%;
   cursor: pointer;
 }
 
-.app::-webkit-scrollbar {
+.app::-webkit-scrollbar,.friends::-webkit-scrollbar {
   display: none;
 }
 
 
-.app {
+.app,.friends {
   scrollbar-width: none;
 }
 
 
-.app {
+.app,.friends {
   -ms-overflow-style: none;
 }
 
