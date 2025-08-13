@@ -18,11 +18,12 @@ class AuthController extends Controller
         'name'=>$data['name'],
         'email'=>$data['email'],
         'password'=>bcrypt($data['password'])
-      ]);
+      ])->fresh();
+      
       $token=$user->createToken('main')->plainTextToken;
       return Responder::success(['token'=>$token,'user'=>$user],'success',201);
     }
-
+    
     public function login(LoginRequest $request){
        $credentiels=$request->validated();
        if(!Auth::attempt($credentiels)){

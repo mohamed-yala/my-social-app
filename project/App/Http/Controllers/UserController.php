@@ -15,6 +15,11 @@ class UserController extends Controller
       $array=array_merge([$user->id],$following);
       $data=User::whereNotIn('id',$array)->cursorPaginate(4);
       return Responder::success($data,'success',200);
-
     }
+
+    public function getUser($id){
+      $user=User::findOrfail($id);
+      return Responder::success($user,'success',200);
+    }
+    
 }

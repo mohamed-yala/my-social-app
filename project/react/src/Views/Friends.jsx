@@ -3,8 +3,9 @@ import '../index.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import axiosClient from '../axios-client'
+import { useNavigate} from 'react-router-dom'
 import { useRef } from 'react'
-import axios from 'axios'
+
 
 function Friends() {
 
@@ -13,6 +14,7 @@ function Friends() {
   const cursor=useRef(null)
   const firstUsers=useRef([])
   const firstCursor=useRef(null)
+   const navigate =useNavigate()
 
    useEffect(()=>{
      axiosClient.get('/users')
@@ -25,7 +27,7 @@ function Friends() {
    },[])
 
    const addSuggestions=()=>{
-     if(cursor.current===null && users.length===4){
+     if(cursor.current===null && users.length<=4){
       console.log('no more users')
      }else{
 
@@ -54,6 +56,10 @@ function Friends() {
      axiosClient.post(`/follower/${user.id}`)
    }
 
+   const visitProfile=(elem)=>{
+     return navigate(`Profile/${elem.id}`)
+   }
+
 
   return (
     <div className='friends'>
@@ -67,8 +73,8 @@ function Friends() {
 
          <div key={elem.id} className='suggestions'>
                <div className='userAcc'>
-                  <img className='profile-img' src='/assets/847969.png'/> 
-                  <p>{elem.name}</p>
+                  <img onClick={()=>visitProfile(elem)} className='profile-img' src='/assets/847969.png'/> 
+                  <p onClick={()=>visitProfile(elem)}>{elem.name}</p>
                </div>
             <button onClick={()=>follow(elem)} className='btnn'>
              {elem.follow ?

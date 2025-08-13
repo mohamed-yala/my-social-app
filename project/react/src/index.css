@@ -96,6 +96,9 @@ border-radius: 50%;
   gap: 10px;
   padding: 0 0 10px 10px;
 }
+.userAcc img,.userAcc p{
+  cursor: pointer;
+}
 .app{
  width: 61%;
  

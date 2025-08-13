@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Responder;
-use App\Http\Requests\CommentRequest;
-use App\Http\Requests\postRequest;
-use App\Models\Comment;
 use App\Models\Like;
 use App\Models\Post;
-use GrahamCampbell\ResultType\Success;
+use App\Models\User;
+use App\Models\Comment;
+use App\Helpers\Responder;
 use Illuminate\Http\Request;
+use App\Http\Requests\postRequest;
+use App\Http\Requests\CommentRequest;
+use GrahamCampbell\ResultType\Success;
 
 class PostController extends Controller
 {
@@ -55,8 +56,8 @@ class PostController extends Controller
      return Responder::success('','success',200);
    }
    
-   public function getLikedPosts(Request $request){
-     $user=$request->user();
+   public function getLikedPosts(Request $request,$id){
+     $user=User::findOrFail($id);
      $data=Like::whereBelongsTo($user,'user')->pluck('post_id');
      return Responder::success($data,'success',200);
    }

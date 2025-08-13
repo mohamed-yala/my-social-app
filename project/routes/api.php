@@ -28,11 +28,14 @@ Route::post('/logout',[AuthController::class,'logout'])->middleware('auth:sanctu
 Route::post('/signup',[AuthController::class,'signup']);
 
 Route::post('/post',[PostController::class,'createPost'])->middleware('auth:sanctum','throttle:10,1');
-Route::get('/userPost',[PostController::class,'getPosts'])->middleware('auth:sanctum');
 Route::get('/homePosts',[PostController::class,'getAllPosts'])->middleware('auth:sanctum');
 Route::patch('/like/{id}',[PostController::class,'like'])->middleware('auth:sanctum');
-Route::get('/likedPosts',[PostController::class,'getLikedPosts'])->middleware('auth:sanctum');
+
 Route::post('/comment/{id}',[PostController::class,'addComment'])->middleware('auth:sanctum');
 Route::get('/comments/{id}',[PostController::class,'getComments'])->middleware('auth:sanctum');
 Route::get('/users',[UserController::class,'getUsers'])->middleware('auth:sanctum');
 Route::post('/follower/{id}',[followerController::class,'follow'])->middleware('auth:sanctum');
+
+Route::get('/userprofile/{id}',[UserController::class,'getUser'])->middleware('auth:sanctum');
+Route::get('/likedposts/{id}',[PostController::class,'getLikedPosts'])->middleware('auth:sanctum');
+Route::get('/userposts/{id}',[PostController::class,'getPosts'])->middleware('auth:sanctum');

@@ -30,7 +30,7 @@ import Profile from './Views/Profile'
             element:<App/>
         },
         {
-            path:'/Profile',
+            path:'/Profile/:id',
             element:<Profile/>
         }
     ]

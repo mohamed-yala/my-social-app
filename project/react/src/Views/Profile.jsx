@@ -3,14 +3,18 @@ import '../Styles/Profile.css'
 import { useStateContext } from '../contexts/ContextProvider'
 import Post from './Post'
 import axiosClient from '../axios-client'
+import { useParams } from 'react-router-dom'
 
 
 function Profile() {
-  
+  const {user}=useStateContext()
   const [posts,setPosts]=useState([])
   const [likedPosts,setLikedPosts]=useState([])
-
-  const {user,setMove,setToggle}=useStateContext()
+  const [userProfile,setUser]=useState({})
+  const {id}=useParams()
+  
+  const {setMove,setToggle}=useStateContext()
+  
   const handleEdit=(e)=>{
     setToggle(true)
     setMove(e.target.dataset.action)
@@ -18,14 +22,17 @@ function Profile() {
 
   useEffect(()=>{
     Promise.all([
-    axiosClient.get('/userPost'),
-    axiosClient.get('/likedPosts')
-  ]).then(([postsRes, likedRes]) => {  
-    setPosts(postsRes.data.data.data);
-    console.log(postsRes.data.data.data)
-    setLikedPosts(likedRes.data.data);
+    axiosClient.get(`/userprofile/${id}`),
+    axiosClient.get(`/userposts/${id}`),
+    axiosClient.get(`/likedposts/${id}`)
+  ]).then(([userRes,postsRes, likedRes]) => { 
+    setUser(userRes.data.data)
+    setPosts(postsRes.data.data.data)
+    setLikedPosts(likedRes.data.data)
   });
-  },[])
+  console.log(id)
+  console.log(user.id)
+  },[id])
 
   return (
     <div className='userProfile container'>
@@ -35,21 +42,27 @@ function Profile() {
 
          <div className='profileInfo'>
 
-            <div className='profileName'>{user.name}</div>
-            
+            <div className='profileName'>{userProfile.name}</div>
+
+            {Number(id)===user.id ? 
             <div className='btns'>
                 <button>Edit</button>
                 <button data-action='post' onClick={handleEdit}>Post</button>
             </div>
+            :
 
+            <div className='btns'>
+                <button>Follow</button>
+            </div>
+            }
             <div className='activity'>
                 <p><span>0</span> posts</p>
-                <p><span>0</span> Followers</p>
-                <p><span>0</span> Following</p>
+                <p><span>{userProfile.follower}</span> Followers</p>
+                <p><span>{userProfile.nbfollowing}</span> Following</p>
             </div>
 
             <div className='bio'>
-                flowers without rain and men without pain never grow 
+                {userProfile.bio}
             </div>
 
          <form>

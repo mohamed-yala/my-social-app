@@ -22,8 +22,12 @@ function Navbar() {
   return (
     <div className='navbar'>
         <div className='userAcc'>
+          <Link className='link' to={`/Profile/${user.id}`}>
             <img className='profile-img' src='/assets/847969.png'/> 
+          </Link>
+          <Link className='link' to={`/Profile/${user.id}`}>
             <p>{user.name}</p>
+          </Link>
         </div>
         
         <p className='menu-title'>
@@ -47,7 +51,7 @@ function Navbar() {
         </div>
         </Link>
        
-       <Link className='link' to='/Profile'>
+       <Link className='link' to={`/Profile/${user.id}`}>
         <div className='des boton-elegante'>
           <FontAwesomeIcon className='icon' icon={faUser} />
           <p>Profile</p>

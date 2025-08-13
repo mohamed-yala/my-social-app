@@ -1,10 +1,13 @@
 import { use, useEffect, useRef, useState } from 'react'
 import Post from './Views/Post'
 import axiosClient from './axios-client'
+import { useStateContext } from './contexts/ContextProvider'
 
 
 
 function App() {
+
+  const {user}=useStateContext()
 
   const [posts,setPosts]=useState([])
   const [likedPosts,setLikedPosts]=useState([])
@@ -14,17 +17,13 @@ function App() {
 
   const fetchMore=()=>{
     
-    Promise.all([
+   
     axiosClient.get('/homePosts',{
       params:{cursor:cursor.current}
-    }),
-    axiosClient.get('/likedPosts')
-  ]).then(([postsRes, likedRes]) => {
-  
+    })
+  .then((postsRes) => {
     cursor.current=postsRes.data.data.next_cursor
-    setPosts(prevPosts=>[...prevPosts,...postsRes.data.data.data])
-    setLikedPosts(likedRes.data.data);
-    
+    setPosts(prevPosts=>[...prevPosts,...postsRes.data.data.data])  
   })
   }
  
@@ -43,7 +42,7 @@ function App() {
 
    Promise.all([
     axiosClient.get('/homePosts'),
-    axiosClient.get('/likedPosts')
+    axiosClient.get(`/likedposts/${user.id}`)
   ]).then(([postsRes, likedRes]) => {
    
     setPosts(postsRes.data.data.data);
