@@ -101,7 +101,6 @@ border-radius: 50%;
 }
 .app{
  width: 61%;
- 
  overflow-y: auto;
 }
 .container{
@@ -114,6 +113,11 @@ border-radius: 50%;
   outline: none;
   width: 100%;
   background-color: var(--other);
+}
+.searchRe{
+  background-color: var(--other);
+  border-radius: 20px;
+  
 }
 .navbar{
   
@@ -333,6 +337,9 @@ border-radius: 50%;
   gap: 10px;
   margin-bottom: 20px;
 }
+.poster p,.poster img{
+  cursor: pointer;
+}
 .photo{
   display: flex;
   justify-content: center;
@@ -364,4 +371,16 @@ border-radius: 50%;
 .app,.friends {
   -ms-overflow-style: none;
 }
-
+.bc p{
+  color: #333;
+}
+.porp{
+  display: flex;
+  gap: 10px;
+}
+.porp label{
+  display: flex;
+  gap: 5px;
+  cursor: pointer;
+    color: var(--text-color);
+}

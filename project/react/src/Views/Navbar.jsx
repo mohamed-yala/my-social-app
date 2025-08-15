@@ -18,6 +18,7 @@ function Navbar() {
     setToken(null)
    })
  }
+ 
 
   return (
     <div className='navbar'>

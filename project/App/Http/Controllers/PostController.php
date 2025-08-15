@@ -23,15 +23,16 @@ class PostController extends Controller
     return Responder::success($data,'success',201);
    }
 
-   public function getPosts(Request $request){
-      $user=$request->user();
+   public function getPosts(Request $request,$id){
+       $user=User::findOrFail($id);
       $data=$user->post()->with('user')->cursorPaginate(5);
       return Responder::success($data,'success',200);
    }
-   public function getAllPosts(Request $request){
-      $data=Post::with('user')->orderBy('created_at','desc')->cursorPaginate(5);
-      return Responder::success($data,'success',200);
-   }
+    public function getAllPosts(){
+
+       $data=Post::with('user')->orderBy('created_at','desc')->cursorPaginate(5);
+       return Responder::success($data,'success',200);
+    }
 
 
    public function like(Request $request,$id){

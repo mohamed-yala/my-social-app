@@ -5,14 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faComment} from '@fortawesome/free-regular-svg-icons'
 import axiosClient from '../axios-client'
 import { useStateContext } from '../contexts/ContextProvider'
-function Post({post,liked}) {
+function Post({post,liked,visitProfile}) {
 
   const {setToggle,setMove,setPostId}=useStateContext()
   
    const [clicked,setClicked]=useState(!liked)
 
    const [nblikes,setLikes]=useState(post.likes)
-   
+  
   
    const openCmnts=(e)=>{
      setToggle(true)
@@ -36,8 +36,8 @@ function Post({post,liked}) {
     <div className='post'>
         
         <div className='poster'>
-            <img className='profile-img' src='/assets/847969.png'/> 
-            <p>{post.user.name}</p>
+            <img onClick={()=>visitProfile(post)} className='profile-img' src='/assets/847969.png'/> 
+            <p onClick={()=>visitProfile(post)}>{post.user.name}</p>
          </div>
           
          <div className='description'>

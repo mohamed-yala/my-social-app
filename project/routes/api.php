@@ -23,7 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/login',[AuthController::class,'login']);
-
 Route::post('/logout',[AuthController::class,'logout'])->middleware('auth:sanctum');
 Route::post('/signup',[AuthController::class,'signup']);
 
@@ -39,3 +38,6 @@ Route::post('/follower/{id}',[followerController::class,'follow'])->middleware('
 Route::get('/userprofile/{id}',[UserController::class,'getUser'])->middleware('auth:sanctum');
 Route::get('/likedposts/{id}',[PostController::class,'getLikedPosts'])->middleware('auth:sanctum');
 Route::get('/userposts/{id}',[PostController::class,'getPosts'])->middleware('auth:sanctum');
+
+Route::post('/search',[UserController::class,'searchUsers'])->middleware('auth:sanctum');
+Route::post('/edit',[UserController::class,'editUser'])->middleware('auth:sanctum');

@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('bio')->default('');
             $table->unsignedInteger('follower')->default(0);
             $table->unsignedInteger('nbfollowing')->default(0);
+            $table->string('ppicture')->default('847969.png');
+            $table->enum('visibility',['public','private'])->default('public');
             $table->timestamps();
         });
 

@@ -2,16 +2,16 @@ import { use, useEffect, useRef, useState } from 'react'
 import Post from './Views/Post'
 import axiosClient from './axios-client'
 import { useStateContext } from './contexts/ContextProvider'
-
+import { useNavigate} from 'react-router-dom'
 
 
 function App() {
 
   const {user}=useStateContext()
-
   const [posts,setPosts]=useState([])
   const [likedPosts,setLikedPosts]=useState([])
   const container=useRef()
+  const [users,setUsers]=useState([])
   
   const cursor=useRef(null)
 
@@ -27,7 +27,23 @@ function App() {
   })
   }
  
-  
+  let latestQuery = '';
+
+const searchUsers = (e) => {
+  const query = e.target.value;
+  latestQuery = query;
+
+  if (query.length >= 1) {
+    axiosClient.post('/search', { search: query })
+      .then(({ data }) => {
+        if (query === latestQuery) {
+          setUsers(data.data);
+        }
+      });
+  } else {
+    setUsers([]);
+  }
+};
 
   useEffect(()=>{
 
@@ -44,7 +60,6 @@ function App() {
     axiosClient.get('/homePosts'),
     axiosClient.get(`/likedposts/${user.id}`)
   ]).then(([postsRes, likedRes]) => {
-   
     setPosts(postsRes.data.data.data);
     cursor.current=postsRes.data.data.next_cursor
     setLikedPosts(likedRes.data.data);
@@ -55,14 +70,37 @@ function App() {
   }
   },[])
 
+
+
+   const navigate =useNavigate()
+      const visitProfile=(elem)=>{
+     return navigate(`/Profile/${elem.id}`)
+   }
+
   return (
+     
+      
+
     <div ref={container} className='app container'>
-      <input placeholder='search'/>
+      <div className='searchRe'>
+      <input   onInput={searchUsers} placeholder='search'/>
+      {
+            users.map((elem)=>(
+         <div key={elem.id} className='userAcc bc'>
+            <img onClick={()=>visitProfile(elem)} className='profile-img' src='/assets/847969.png'/> 
+            <p onClick={()=>visitProfile(elem)}>{elem.name}</p>
+          </div>
+       ))
+    }
+     
+       </div>
+
       {posts.map((elem)=>(
-        <Post key={elem.id} post={elem} liked={likedPosts.includes(elem.id)? true:false} />
+        <Post visitProfile={visitProfile} key={elem.id} post={elem} liked={likedPosts.includes(elem.id)? true:false} />
        
       ))}
     </div>
+    
   )
 }
 

@@ -3,18 +3,22 @@ import '../index.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import axiosClient from '../axios-client'
-import { useNavigate} from 'react-router-dom'
+
 import { useRef } from 'react'
+import { useStateContext } from '../contexts/ContextProvider'
+import { useNavigate} from 'react-router-dom'
+
+    
 
 
 function Friends() {
-
+ 
   const [users,setUsers]=useState([])
   const [showMore,setShowMore]=useState(true)
   const cursor=useRef(null)
   const firstUsers=useRef([])
   const firstCursor=useRef(null)
-   const navigate =useNavigate()
+   
 
    useEffect(()=>{
      axiosClient.get('/users')
@@ -25,6 +29,11 @@ function Friends() {
        firstCursor.current=cursor.current
      })
    },[])
+
+      const navigate =useNavigate()
+      const visitProfile=(elem)=>{
+     return navigate(`Profile/${elem.id}`)
+   }
 
    const addSuggestions=()=>{
      if(cursor.current===null && users.length<=4){
@@ -56,9 +65,7 @@ function Friends() {
      axiosClient.post(`/follower/${user.id}`)
    }
 
-   const visitProfile=(elem)=>{
-     return navigate(`Profile/${elem.id}`)
-   }
+
 
 
   return (

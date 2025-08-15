@@ -66,6 +66,14 @@
     border-radius: 10px;
     height: 100px !important;
 }
+.add input{
+    outline: none;
+    width: 100%;
+    background-color: var(--other);
+    padding: 10px;
+    border-radius: 10px;
+    border:none ;
+}
 .add button{
   margin: 0 auto;
   padding: 12px;

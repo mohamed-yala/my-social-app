@@ -5,6 +5,7 @@ import Friends from '../Views/Friends'
 import { useStateContext } from '../contexts/ContextProvider'
 import AddPost from '../Views/AddPost'
 import AddComment from '../Views/AddComment'
+import EditProfile from '../Views/EditProfile'
 
 
 function DefaultLayout() {
@@ -26,6 +27,8 @@ function DefaultLayout() {
 
       {toggle && move==='post' && <AddPost/>}
       {toggle && move==='comment' && <AddComment/>} 
+      {toggle && move==='edit' && <EditProfile/>}
+      
 
     </div>
   )

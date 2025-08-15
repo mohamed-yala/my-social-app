@@ -30,8 +30,6 @@ function Profile() {
     setPosts(postsRes.data.data.data)
     setLikedPosts(likedRes.data.data)
   });
-  console.log(id)
-  console.log(user.id)
   },[id])
 
   return (
@@ -46,7 +44,7 @@ function Profile() {
 
             {Number(id)===user.id ? 
             <div className='btns'>
-                <button>Edit</button>
+                <button data-action='edit' onClick={handleEdit}>Edit</button>
                 <button data-action='post' onClick={handleEdit}>Post</button>
             </div>
             :
@@ -64,19 +62,6 @@ function Profile() {
             <div className='bio'>
                 {userProfile.bio}
             </div>
-
-         <form>
-                <label className="radio-container">Public
-                 <input type="radio" name="choice" />
-                 <span class="checkmark"></span>
-              </label>
-
-              <label className="radio-container">Private
-                  <input type="radio" name="choice"/>
-                  <span class="checkmark"></span>
-             </label>
-        </form>
-
 
 
          </div>

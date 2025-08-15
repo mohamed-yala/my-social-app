@@ -21,7 +21,7 @@ function Login() {
     .then(({data})=>{
       setUser(data.data.user)
       setToken(data.data.token)
-      console.log(data.data.user)
+      
     })
     .catch((err)=>{
       console.log(err)

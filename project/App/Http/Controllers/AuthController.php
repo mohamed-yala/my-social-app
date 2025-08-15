@@ -32,6 +32,7 @@ class AuthController extends Controller
        $user=Auth::user();
        /**@var \App\Models\User $user */
        $token=$user->createToken('main')->plainTextToken;
+       
        return Responder::success(['token'=>$token,'user'=>$user],'success',200);
     }
     

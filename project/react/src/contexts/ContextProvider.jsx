@@ -1,5 +1,6 @@
 import React, { createContext, use, useContext, useState } from 'react'
 
+
 const stateContext=createContext({
     user: null,
     token: null,
@@ -12,7 +13,8 @@ const stateContext=createContext({
     setToggle:()=>{},
     setMove:()=>{},
     setPostId:()=>{},
-    setNbCmnts:()=>{}
+    setNbCmnts:()=>{},
+    
 })
 
 function ContextProvider({children}) {
@@ -23,7 +25,9 @@ function ContextProvider({children}) {
     const [post_id,setPostId]=useState(null)
     const [nbCmnts,setNbCmnts]=useState(null)
 
-    
+
+  
+
                                
     const setToken=(token)=>{
         _setToken(token)
@@ -35,6 +39,7 @@ function ContextProvider({children}) {
     }
 
     const setUser=(user)=>{
+    
       _setUser(user)
       if(user){
         localStorage.setItem('user',JSON.stringify(user))

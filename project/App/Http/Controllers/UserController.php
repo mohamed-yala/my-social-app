@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Responder;
+use App\Http\Requests\EditRequest;
+use App\Http\Requests\SearchRequest;
 use App\Models\Follower;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,6 +22,22 @@ class UserController extends Controller
     public function getUser($id){
       $user=User::findOrfail($id);
       return Responder::success($user,'success',200);
+    }
+    
+    public function searchUsers(SearchRequest $request){
+       $validated=$request->validated();
+       $data=User::search($validated['search'])->get();
+      return  Responder::success($data,'success',200);
+    }
+
+    public function editUser(EditRequest $request){
+      $data=$request->validated();
+      $user=$request->user();
+      if($request->hasFile('pPicture')){
+        $data['pPicture']= $request->file('pPicture')->store('profilePictures','public');
+      }
+      $user->update($data);
+    return Responder::success($user,'success',200);
     }
     
 }
