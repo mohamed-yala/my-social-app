@@ -41,3 +41,6 @@ Route::get('/userposts/{id}',[PostController::class,'getPosts'])->middleware('au
 
 Route::post('/search',[UserController::class,'searchUsers'])->middleware('auth:sanctum');
 Route::post('/edit',[UserController::class,'editUser'])->middleware('auth:sanctum');
+
+Route::get('/followers/{id}',[followerController::class,'getFollowers'])->middleware('auth:sanctum');
+Route::get('/following/{id}',[followerController::class,'getFollowing'])->middleware('auth:sanctum');

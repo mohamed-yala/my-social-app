@@ -6,6 +6,7 @@ import { useStateContext } from '../contexts/ContextProvider'
 import AddPost from '../Views/AddPost'
 import AddComment from '../Views/AddComment'
 import EditProfile from '../Views/EditProfile'
+import ProfileStats from '../Views/ProfileStats'
 
 
 function DefaultLayout() {
@@ -24,10 +25,12 @@ function DefaultLayout() {
       <Navbar/>
       <Outlet/>
       <Friends/>
-
+  
       {toggle && move==='post' && <AddPost/>}
       {toggle && move==='comment' && <AddComment/>} 
       {toggle && move==='edit' && <EditProfile/>}
+      {toggle && move==='followers' && <ProfileStats window='followers'/> }
+      {toggle && move==='following' && <ProfileStats window='following'/>}
       
 
     </div>

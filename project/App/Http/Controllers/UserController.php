@@ -19,9 +19,11 @@ class UserController extends Controller
       return Responder::success($data,'success',200);
     }
 
-    public function getUser($id){
+    public function getUser(Request $request,$id){
+      $vistor=$request->user();
       $user=User::findOrfail($id);
-      return Responder::success($user,'success',200);
+      $following=Follower::where('user_id',$vistor->id)->pluck('following_id');
+      return Responder::success(['user'=>$user,'following'=>$following],'success',200);
     }
     
     public function searchUsers(SearchRequest $request){

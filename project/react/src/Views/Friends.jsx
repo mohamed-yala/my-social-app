@@ -30,7 +30,7 @@ function Friends() {
      })
    },[])
 
-      const navigate =useNavigate()
+      const navigate=useNavigate()
       const visitProfile=(elem)=>{
      return navigate(`Profile/${elem.id}`)
    }
@@ -80,7 +80,10 @@ function Friends() {
 
          <div key={elem.id} className='suggestions'>
                <div className='userAcc'>
-                  <img onClick={()=>visitProfile(elem)} className='profile-img' src='/assets/847969.png'/> 
+                {elem.pPicture==='847969.png' ?
+                <img onClick={()=>visitProfile(elem)} className='profile-img' src='/assets/847969.png'/> :
+                 <img onClick={()=>visitProfile(elem)} className='profile-img' src={`${import.meta.env.VITE_API_BASE_URL}/storage/${elem.pPicture}`}/> 
+                }  
                   <p onClick={()=>visitProfile(elem)}>{elem.name}</p>
                </div>
             <button onClick={()=>follow(elem)} className='btnn'>

@@ -36,7 +36,11 @@ function Post({post,liked,visitProfile}) {
     <div className='post'>
         
         <div className='poster'>
-            <img onClick={()=>visitProfile(post)} className='profile-img' src='/assets/847969.png'/> 
+          {post.user.pPicture==='847969.png' ?
+            <img onClick={()=>visitProfile(post.user)} className='profile-img'  src='/assets/847969.png' /> :
+            <img onClick={()=>visitProfile(post.user)} className='profile-img' src={`${import.meta.env.VITE_API_BASE_URL}/storage/${post.user.pPicture}`}  />
+         }
+           
             <p onClick={()=>visitProfile(post)}>{post.user.name}</p>
          </div>
           

@@ -26,4 +26,15 @@ class followerController extends Controller
       }
       return Responder::success('','success',200);
     }
+    public function getFollowers($id){
+     $user=User::findOrFail($id);
+      $followers=Follower::where('following_id',$user->id)->with('user')->get()->pluck('user');
+      return Responder::success($followers,'success',200);
+    } 
+    public function getFollowing($id){
+     $user=User::findOrFail($id);
+     $following=$user->followers()->pluck('following_id')->toArray();
+     $data=User::whereIn('id',$following)->get();
+     return Responder::success($data,'success',200);
+    }
 }

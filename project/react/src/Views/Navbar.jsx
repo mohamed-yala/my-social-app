@@ -24,7 +24,9 @@ function Navbar() {
     <div className='navbar'>
         <div className='userAcc'>
           <Link className='link' to={`/Profile/${user.id}`}>
-            <img className='profile-img' src='/assets/847969.png'/> 
+          {user.pPicture==='847969.png'?
+            <img className='profile-img' src='/assets/847969.png'/> :
+            <img className='profile-img'  src={`${import.meta.env.VITE_API_BASE_URL}/storage/${user.pPicture}`}/>  }
           </Link>
           <Link className='link' to={`/Profile/${user.id}`}>
             <p>{user.name}</p>

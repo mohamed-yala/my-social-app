@@ -8,12 +8,14 @@ const stateContext=createContext({
     move:null,
     post_id:null,
     nbCmnts:null,
+    count:null,
     setUser: ()=>{},
     setToken: ()=>{},
     setToggle:()=>{},
     setMove:()=>{},
     setPostId:()=>{},
     setNbCmnts:()=>{},
+    setCount:()=>{}
     
 })
 
@@ -24,8 +26,9 @@ function ContextProvider({children}) {
     const [move,_setMove]=useState(localStorage.getItem('move'))
     const [post_id,setPostId]=useState(null)
     const [nbCmnts,setNbCmnts]=useState(null)
-
-
+    const [count,setCount]=useState(false)
+    
+    
   
 
                                
@@ -62,7 +65,7 @@ function ContextProvider({children}) {
   
   
   return (
-    <stateContext.Provider value={{user,token,toggle,move,post_id,nbCmnts,setUser,setToken,setToggle,setMove,setPostId,setNbCmnts}}>
+    <stateContext.Provider value={{user,token,toggle,move,post_id,nbCmnts,count,setUser,setToken,setToggle,setMove,setPostId,setNbCmnts,setCount}}>
        {children}
     </stateContext.Provider>
   )

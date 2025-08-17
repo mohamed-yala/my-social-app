@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 
 
 function Profile() {
-  const {user}=useStateContext()
+  const {user,count}=useStateContext()
   const [posts,setPosts]=useState([])
   const [likedPosts,setLikedPosts]=useState([])
   const [userProfile,setUser]=useState({})
@@ -19,25 +19,39 @@ function Profile() {
     setToggle(true)
     setMove(e.target.dataset.action)
   }
-
+ const removeForm=()=>{
+   setToggle(false)
+    setMove(null)
+ }
   useEffect(()=>{
     Promise.all([
     axiosClient.get(`/userprofile/${id}`),
     axiosClient.get(`/userposts/${id}`),
     axiosClient.get(`/likedposts/${id}`)
   ]).then(([userRes,postsRes, likedRes]) => { 
-    setUser(userRes.data.data)
+    setUser({...userRes.data.data.user,follow: userRes.data.data.following.includes(Number(id))})
     setPosts(postsRes.data.data.data)
     setLikedPosts(likedRes.data.data)
   });
-  },[id])
+  removeForm()
+  },[id,count])
+
+  const follow=()=>{
+     setUser({...userProfile,follow:!userProfile.follow}) 
+     axiosClient.post(`/follower/${Number(id)}`)
+   }
+
+
 
   return (
     <div className='userProfile container'>
 
        <div className='profileCon'>
-         <img src='/assets/847969.png'></img>
-
+        {userProfile.pPicture==='847969.png' ?
+           <img src='/assets/847969.png'/> :
+           <img className='profilePic' src={`${import.meta.env.VITE_API_BASE_URL}/storage/${userProfile.pPicture}`}/>
+        }
+  
          <div className='profileInfo'>
 
             <div className='profileName'>{userProfile.name}</div>
@@ -48,15 +62,22 @@ function Profile() {
                 <button data-action='post' onClick={handleEdit}>Post</button>
             </div>
             :
-
+            (userProfile.follow ?  
             <div className='btns'>
-                <button>Follow</button>
+                <button onClick={follow}>Following</button>
+            </div>:
+            <div className='btns'>
+                <button onClick={follow}>Follow</button>
             </div>
+            )
+        
+            
+           
             }
             <div className='activity'>
                 <p><span>0</span> posts</p>
-                <p><span>{userProfile.follower}</span> Followers</p>
-                <p><span>{userProfile.nbfollowing}</span> Following</p>
+                <p style={{cursor:'pointer'}} onClick={handleEdit} data-action='followers'><span>{userProfile.follower}</span> Followers</p>
+                <p style={{cursor:'pointer'}} onClick={handleEdit} data-action='following'><span>{userProfile.nbfollowing}</span> Following</p>
             </div>
 
             <div className='bio'>

@@ -10,7 +10,7 @@ import axiosClient from '../axios-client'
 import { useRef } from 'react'
 function AddComment() {
 
- const {user,setMove,setToggle,post_id}=useStateContext()
+ const {setMove,setToggle,post_id,setCount}=useStateContext()
 
     const commentRef=useRef()
    
@@ -29,6 +29,7 @@ function AddComment() {
       })
     },[])
 
+
     const handleInpt=(e)=>{
          e.preventDefault()
         const payload={
@@ -38,11 +39,12 @@ function AddComment() {
       
        axiosClient.post(`/comment/${post_id}`,payload)
        .then(({data})=>{
+        setCount(prev=>!prev)
         setComments([...comments,data.data])
         commentRef.current.value=''
         
        })
-
+       
       }
     
 
