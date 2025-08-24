@@ -12,6 +12,19 @@ class Responder {
       ],$code);
   }
 
+  public static function unauthorized($message,$code=403){
+    return response([
+      'status'=>false,
+      'message'=>$message
+    ],$code);
+  }
+  public static function validationErr($message,$code=422){
+    return response([
+      'status'=>false,
+      'message'=>$message
+    ],$code);
+  }
+
  
 
 }

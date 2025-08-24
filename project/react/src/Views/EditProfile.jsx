@@ -5,6 +5,7 @@ import '../index.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import axiosClient from '../axios-client'
+import { useParams } from 'react-router-dom'
 
 function EditProfile() {
  const {user,setUser}=useStateContext()
@@ -12,6 +13,7 @@ function EditProfile() {
  const [bio,setBio]=useState(user.bio)
  const [name,setName]=useState(user.name)
  const [choice,setChoice]=useState(user.visibility)
+ const {id}=useParams()
 
  const {setMove,setToggle}=useStateContext()
   
@@ -21,8 +23,7 @@ function EditProfile() {
    }
 
     const handleSubmit=(e)=>{
-       e.preventDefault()
-      
+       e.preventDefault()    
       const formData=new FormData()
       if(imageRef.current.files[0]){
        formData.append('pPicture',imageRef.current.files[0])
@@ -31,7 +32,7 @@ function EditProfile() {
        formData.append('bio',bio)
        formData.append('visibility',choice)
       
-      axiosClient.post('/edit',formData)
+      axiosClient.post(`/edit/${Number(id)}`,formData)
        .then(({data})=>{
           setUser(data.data)
           removeForm()

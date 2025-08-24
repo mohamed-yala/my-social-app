@@ -80,7 +80,7 @@ function Friends() {
 
          <div key={elem.id} className='suggestions'>
                <div className='userAcc'>
-                {elem.pPicture==='847969.png' ?
+                {elem.ppicture==='847969.png' ?
                 <img onClick={()=>visitProfile(elem)} className='profile-img' src='/assets/847969.png'/> :
                  <img onClick={()=>visitProfile(elem)} className='profile-img' src={`${import.meta.env.VITE_API_BASE_URL}/storage/${elem.pPicture}`}/> 
                 }  

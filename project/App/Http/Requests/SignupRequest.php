@@ -33,4 +33,17 @@ class SignupRequest extends FormRequest
           ]
         ];
     }
+
+  public function messages() {
+    return [
+        'name.required' => 'the name is required.',
+        'name.max'=>'Name should have less than 55 character',
+        'email.email' => 'Please enter a valid email address.',
+        'email.required'=>'Email is required',
+        'password.required' => 'Password is rquired.',
+        'password.min' => 'Password must be at least 8 characters.',
+        'password.confirmed'=>'the confirmation does not match'
+    ];
+  }
+
 }

@@ -6,7 +6,7 @@ import { useStateContext } from '../contexts/ContextProvider'
 
 function Signup() {
 
-   const {setUser,setToken}=useStateContext()
+   const {setUser,setToken,setErr,setShowErr}=useStateContext()
 
   const name=useRef()
   const email=useRef()
@@ -15,6 +15,7 @@ function Signup() {
 
   const handleSubmit=(ev)=>{
     ev.preventDefault()
+    setShowErr(false)
     const payload={
       name:name.current.value,
       email:email.current.value,
@@ -29,7 +30,15 @@ function Signup() {
      
     })
     .catch((err)=>{
-      console.log(err)
+      
+       if(err.response.status===401){
+       setErr({message:[err.response.data.message]})
+      }
+      if(err.response.status===422){
+       setErr(err.response.data.errors)
+      }
+      setShowErr(true)
+
     })
     
     

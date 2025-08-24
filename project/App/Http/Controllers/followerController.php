@@ -6,9 +6,12 @@ use App\Models\User;
 use App\Models\Follower;
 use App\Helpers\Responder;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller; 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-class followerController extends Controller
+class FollowerController extends Controller
 {
+   use AuthorizesRequests;
     public function follow(Request $request,$id){
       $user=$request->user();
       $followed=User::findOrFail($id);
@@ -26,15 +29,17 @@ class followerController extends Controller
       }
       return Responder::success('','success',200);
     }
-    public function getFollowers($id){
-     $user=User::findOrFail($id);
-      $followers=Follower::where('following_id',$user->id)->with('user')->get()->pluck('user');
-      return Responder::success($followers,'success',200);
+
+    public function getFollowers(User $user){
+     $followers=Follower::where('following_id',$user->id)->with('user')->get()->pluck('user');
+     return Responder::success($followers,'success',200);
     } 
-    public function getFollowing($id){
-     $user=User::findOrFail($id);
+
+    public function getFollowing(User $user){
+     $this->authorize('visit',$user);
      $following=$user->followers()->pluck('following_id')->toArray();
      $data=User::whereIn('id',$following)->get();
      return Responder::success($data,'success',200);
     }
+
 }

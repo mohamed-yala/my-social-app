@@ -2,6 +2,7 @@ import React from 'react'
 import {Navigate, Outlet} from 'react-router-dom'
 import '../index.css'
 import { useStateContext } from '../contexts/ContextProvider'
+import Err from '../Views/err'
 
 function GuestLayout() {
 
@@ -13,6 +14,7 @@ function GuestLayout() {
 
   return (
     <div className='guestLayout'>
+       <Err/>
        <Outlet/>
        
     </div>

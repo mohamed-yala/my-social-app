@@ -4,41 +4,69 @@ import { useStateContext } from '../contexts/ContextProvider'
 import Post from './Post'
 import axiosClient from '../axios-client'
 import { useParams } from 'react-router-dom'
+import Loading from './Loading'
 
 
 function Profile() {
-  const {user,count}=useStateContext()
+  const {user,count,loading,setLoading,setMove,setToggle,setCount}=useStateContext()
   const [posts,setPosts]=useState([])
   const [likedPosts,setLikedPosts]=useState([])
-  const [userProfile,setUser]=useState({})
+  const [userProfile,setUserProfile]=useState({})
   const {id}=useParams()
   
-  const {setMove,setToggle}=useStateContext()
+  
+
   
   const handleEdit=(e)=>{
-    setToggle(true)
-    setMove(e.target.dataset.action)
+         if( Number(id)===user.id|| userProfile.visibility==='public' || userProfile.follow){
+          setToggle(true)
+          setMove(e.target.dataset.action)
+          }
   }
  const removeForm=()=>{
    setToggle(false)
     setMove(null)
  }
   useEffect(()=>{
-    Promise.all([
+   
+   setLoading(true)
+   
+    Promise.allSettled([
     axiosClient.get(`/userprofile/${id}`),
     axiosClient.get(`/userposts/${id}`),
-    axiosClient.get(`/likedposts/${id}`)
-  ]).then(([userRes,postsRes, likedRes]) => { 
-    setUser({...userRes.data.data.user,follow: userRes.data.data.following.includes(Number(id))})
-    setPosts(postsRes.data.data.data)
-    setLikedPosts(likedRes.data.data)
+    axiosClient.get(`/likedposts/${user.id}`)
+  ]).then((result) => { 
+    const [userRes,postsRes, likedRes]=result
+   if(userRes.status==='fulfilled'){
+    setUserProfile({...userRes.value.data.data.user,follow: userRes.value.data.data.following.includes(Number(id))})
+  
+   }
+    
+   
+    if(postsRes.status==="fulfilled"){
+    setPosts(postsRes.value.data.data.data)
+    }else{
+      setPosts([])
+    }
+
+    if(likedRes.status==="fulfilled"){
+    setLikedPosts(likedRes.value.data.data)
+    
+  }
+  
+  
+  }).finally(()=>{
+    removeForm()
+  setLoading(false)
+   
   });
-  removeForm()
+  
   },[id,count])
 
   const follow=()=>{
-     setUser({...userProfile,follow:!userProfile.follow}) 
+     setUserProfile({...userProfile,follow:!userProfile.follow}) 
      axiosClient.post(`/follower/${Number(id)}`)
+     setCount(prev=>!prev)
    }
 
 
@@ -47,7 +75,7 @@ function Profile() {
     <div className='userProfile container'>
 
        <div className='profileCon'>
-        {userProfile.pPicture==='847969.png' ?
+        {userProfile.ppicture==='847969.png' ?
            <img src='/assets/847969.png'/> :
            <img className='profilePic' src={`${import.meta.env.VITE_API_BASE_URL}/storage/${userProfile.pPicture}`}/>
         }
@@ -70,10 +98,8 @@ function Profile() {
                 <button onClick={follow}>Follow</button>
             </div>
             )
-        
-            
-           
             }
+
             <div className='activity'>
                 <p><span>0</span> posts</p>
                 <p style={{cursor:'pointer'}} onClick={handleEdit} data-action='followers'><span>{userProfile.follower}</span> Followers</p>
@@ -88,10 +114,16 @@ function Profile() {
          </div>
 
        </div>
-      {posts.map((elem)=>(
+     
+     { Number(id)===user.id|| userProfile.visibility==='public' || userProfile.follow? 
+
+      posts.map((elem)=>(
         <Post key={elem.id} post={elem} liked={likedPosts.includes(elem.id)? true:false}/>
-      ))}
-        
+      ))
+        : 
+       <div className='privateAcnt'>private account</div> 
+      }
+     
     </div>
   )
 }

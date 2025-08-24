@@ -1,4 +1,4 @@
-import React, { createContext, use, useContext, useState } from 'react'
+import React, { createContext, use, useContext, useMemo, useState } from 'react'
 
 
 const stateContext=createContext({
@@ -9,13 +9,20 @@ const stateContext=createContext({
     post_id:null,
     nbCmnts:null,
     count:null,
+    loading:false,
+    showErr:false,
+    Err:[],
     setUser: ()=>{},
     setToken: ()=>{},
     setToggle:()=>{},
     setMove:()=>{},
     setPostId:()=>{},
     setNbCmnts:()=>{},
-    setCount:()=>{}
+    setCount:()=>{},
+    setLoading:()=>{},
+    setShowErr:()=>{},
+    setErr:()=>{}
+
     
 })
 
@@ -27,6 +34,9 @@ function ContextProvider({children}) {
     const [post_id,setPostId]=useState(null)
     const [nbCmnts,setNbCmnts]=useState(null)
     const [count,setCount]=useState(false)
+    const [loading,setLoading]=useState(false)
+    const [showErr,setShowErr]=useState(false)
+    const [Err,setErr]=useState([])
     
     
   
@@ -60,12 +70,16 @@ function ContextProvider({children}) {
       }
     }
     
-    
+     const contextValue = useMemo(() => ({
+    user, token, toggle, move, post_id, nbCmnts, count, loading,showErr,Err,
+    setUser, setToken, setToggle, setMove, setPostId, setNbCmnts, setCount, setLoading,setShowErr,setErr
+  }), [user, token, toggle, move, post_id, nbCmnts, count, loading,showErr,Err]);
+
 
   
   
   return (
-    <stateContext.Provider value={{user,token,toggle,move,post_id,nbCmnts,count,setUser,setToken,setToggle,setMove,setPostId,setNbCmnts,setCount}}>
+    <stateContext.Provider value={contextValue}>
        {children}
     </stateContext.Provider>
   )

@@ -7,13 +7,14 @@ import AddPost from '../Views/AddPost'
 import AddComment from '../Views/AddComment'
 import EditProfile from '../Views/EditProfile'
 import ProfileStats from '../Views/ProfileStats'
+import Loading from '../Views/Loading'
 
 
 function DefaultLayout() {
 
-  const {move,toggle}=useStateContext()
+  const {move,toggle,token,loading}=useStateContext()
 
-   const {token}=useStateContext()
+  
 
    if(!token){
     return <Navigate to='/login'/> 
@@ -22,9 +23,16 @@ function DefaultLayout() {
   
   return (
     <div className='defaultLayout'>
-      <Navbar/>
-      <Outlet/>
-      <Friends/>
+      { loading && <Loading/>}
+         
+        
+           <Navbar/>
+           <Outlet/>
+           <Friends/>
+       
+      
+     
+      
   
       {toggle && move==='post' && <AddPost/>}
       {toggle && move==='comment' && <AddComment/>} 

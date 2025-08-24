@@ -22,7 +22,9 @@ return new class extends Migration
             $table->unsignedInteger('follower')->default(0);
             $table->unsignedInteger('nbfollowing')->default(0);
             $table->string('ppicture')->default('847969.png');
+            $table->boolean('is_admin')->default(false);
             $table->enum('visibility',['public','private'])->default('public');
+            $table->timestamp('blocked_at')->nullable();
             $table->timestamps();
         });
 

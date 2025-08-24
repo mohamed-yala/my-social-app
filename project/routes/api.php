@@ -40,7 +40,7 @@ Route::get('/likedposts/{id}',[PostController::class,'getLikedPosts'])->middlewa
 Route::get('/userposts/{id}',[PostController::class,'getPosts'])->middleware('auth:sanctum');
 
 Route::post('/search',[UserController::class,'searchUsers'])->middleware('auth:sanctum');
-Route::post('/edit',[UserController::class,'editUser'])->middleware('auth:sanctum');
+Route::post('/edit/{user}',[UserController::class,'editUser'])->middleware('auth:sanctum','can:update,user');
 
-Route::get('/followers/{id}',[followerController::class,'getFollowers'])->middleware('auth:sanctum');
-Route::get('/following/{id}',[followerController::class,'getFollowing'])->middleware('auth:sanctum');
+Route::get('/followers/{user}',[FollowerController::class,'getFollowers'])->middleware('auth:sanctum','can:visit,user');
+Route::get('/following/{user}',[FollowerController::class,'getFollowing'])->middleware('auth:sanctum');

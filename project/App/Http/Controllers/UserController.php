@@ -27,14 +27,14 @@ class UserController extends Controller
     }
     
     public function searchUsers(SearchRequest $request){
+     
        $validated=$request->validated();
        $data=User::search($validated['search'])->get();
       return  Responder::success($data,'success',200);
     }
 
-    public function editUser(EditRequest $request){
+    public function editUser(EditRequest $request,User $user){
       $data=$request->validated();
-      $user=$request->user();
       if($request->hasFile('pPicture')){
         $data['pPicture']= $request->file('pPicture')->store('profilePictures','public');
       }

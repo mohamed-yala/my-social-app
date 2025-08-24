@@ -25,7 +25,9 @@ class User extends Authenticatable
         'password',
         'bio',
         'pPicture',
-        'visibility'
+        'visibility',
+        'email_verified_at',
+         'is_admin'
         
     ];
 
@@ -63,5 +65,8 @@ class User extends Authenticatable
     }
     public function like(){
         return $this->hasMany(Like::class);
+    }
+    public function groups(){
+       return $this->belongsToMany(Group::class,'group_users');
     }
 }

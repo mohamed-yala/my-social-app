@@ -27,7 +27,7 @@ class AuthController extends Controller
     public function login(LoginRequest $request){
        $credentiels=$request->validated();
        if(!Auth::attempt($credentiels)){
-        return response(['message'=>'Provided email or password is incorrect'],401);
+        return Responder::validationErr('Provided email or password is incorrect',401);
        }
        $user=Auth::user();
        /**@var \App\Models\User $user */

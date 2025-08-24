@@ -5,13 +5,16 @@ import { useStateContext } from '../contexts/ContextProvider'
 
 function Login() {
 
-   const {setToken,setUser}=useStateContext()
+   const {setToken,setUser,setShowErr,setErr}=useStateContext()
+   
   
   const email=useRef()
   const password=useRef()
    
   const handleSubmit=(ev)=>{
     ev.preventDefault()
+    setShowErr(false)
+    
     const payload={
       email:email.current.value,
       password:password.current.value
@@ -24,7 +27,15 @@ function Login() {
       
     })
     .catch((err)=>{
-      console.log(err)
+      
+      if(err.response.status===401){
+       setErr({message:[err.response.data.message]})
+      }
+      if(err.response.status===422){
+       setErr(err.response.data.errors)
+      }
+      setShowErr(true)
+     
     })
     
     

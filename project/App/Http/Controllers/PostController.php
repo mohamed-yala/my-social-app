@@ -10,6 +10,7 @@ use App\Helpers\Responder;
 use Illuminate\Http\Request;
 use App\Http\Requests\postRequest;
 use App\Http\Requests\CommentRequest;
+use App\Models\Follower;
 use GrahamCampbell\ResultType\Success;
 
 class PostController extends Controller
@@ -24,7 +25,12 @@ class PostController extends Controller
    }
 
    public function getPosts(Request $request,$id){
-       $user=User::findOrFail($id);
+      $visitor=$request->user();
+      $user=User::findOrFail($id);
+      $exits=Follower::where(['user_id'=>$visitor->id,'following_id'=>$user->id])->exists();
+      if($user->visibility=='private' && !$exits){
+        return Responder::unauthorized('private account',403);
+      }
       $data=$user->post()->with('user')->cursorPaginate(5);
       return Responder::success($data,'success',200);
    }
