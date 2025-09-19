@@ -1,6 +1,5 @@
 <?php
 
-<<<<<<< HEAD
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -10,14 +9,6 @@ use App\Http\Controllers\followerController;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\MessageController;
 use App\Models\Message;
-=======
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\followerController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\UserController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 
 /*
 |--------------------------------------------------------------------------
@@ -55,7 +46,6 @@ Route::post('/search',[UserController::class,'searchUsers'])->middleware('auth:s
 Route::post('/edit/{user}',[UserController::class,'editUser'])->middleware('auth:sanctum','can:update,user');
 
 Route::get('/followers/{user}',[FollowerController::class,'getFollowers'])->middleware('auth:sanctum','can:visit,user');
-<<<<<<< HEAD
 Route::get('/following/{user}',[FollowerController::class,'getFollowing'])->middleware('auth:sanctum');
 
 Route::get('/conversations',[ConversationController::class,'getConversations'])->middleware('auth:sanctum');
@@ -67,6 +57,3 @@ Route::post('/message',[MessageController::class,'store'])->middleware('auth:san
 Route::delete('/message/{message}',[MessageController::class,'destroy'])->middleware('auth:sanctum');
 
 Route::get('/nbPost/{id}',[PostController::class,'getNbPosts'])->middleware('auth:sanctum');
-=======
-Route::get('/following/{user}',[FollowerController::class,'getFollowing'])->middleware('auth:sanctum');
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46

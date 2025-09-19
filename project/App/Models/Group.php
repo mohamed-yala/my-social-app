@@ -15,13 +15,15 @@ class Group extends Model
         'last_message_id',
 
     ];
+
     public function users(){
        return $this->belongsToMany(User::class,'group_users');
     }
-<<<<<<< HEAD
+    
     public function messages(){
         return $this->hasMany(Message::class);
     }
+
     public function owner(){
       return $this->belongsTo(User::class);
     }
@@ -52,6 +54,12 @@ class Group extends Model
         ];
     }
     
-=======
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
+    public static function updateGroupWithMessage($groupId,$message){
+      return self::updateOrCreate(
+       ['id'=>$groupId],
+       ['last_message_id'=>$message->id]
+      );
+    }
+
+
 }

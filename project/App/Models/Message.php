@@ -13,11 +13,7 @@ class Message extends Model
         'message',
         'sender_id',
         'group_id',
-<<<<<<< HEAD
         'receiver_id'
-=======
-        'receiver_id '
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
     ];
   public function sender(){
     return $this->belongsTo(User::class,'sender_id');
@@ -31,8 +27,5 @@ class Message extends Model
   public function attachments(){
     return $this->hasMany(MessageAttachment::class);
   }
-<<<<<<< HEAD
   
-=======
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 }

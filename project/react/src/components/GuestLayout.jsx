@@ -2,7 +2,7 @@ import React from 'react'
 import {Navigate, Outlet} from 'react-router-dom'
 import '../index.css'
 import { useStateContext } from '../contexts/ContextProvider'
-import Err from '../Views/err'
+import Err from '../Views/Err'
 
 function GuestLayout() {
 

@@ -65,10 +65,7 @@
 
 .cmnt-img{
     width: 30px;
-<<<<<<< HEAD
   
-=======
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 }
 .cmntForm{
     width: 100%;
@@ -97,13 +94,10 @@
 
 .cmnts {
   -ms-overflow-style: none;
-<<<<<<< HEAD
 }
 
 @media (max-width:500px) {
   .cmntsCon{
     width: 90%;
   }
-=======
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 }

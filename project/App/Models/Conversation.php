@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Model;
 
 class Conversation extends Model
@@ -23,11 +24,9 @@ class Conversation extends Model
     public function user2(){
         return $this->belongsTo(User::class,'user_id2');
     }
-<<<<<<< HEAD
 
     public static function getConversationsForSidebar(User $user){
         $users=User::getUsersExceptUser($user);
-       
         return $users->map(function (User $user){
             return $user->toConversationArray();
         });
@@ -54,6 +53,4 @@ class Conversation extends Model
     }
 
    
-=======
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 }

@@ -34,18 +34,11 @@ class UserController extends Controller
     }
 
     public function editUser(EditRequest $request,User $user){
-<<<<<<< HEAD
       $data=$request->validated();  
       if($request->hasFile('ppicture')){
         $data['ppicture']= $request->file('ppicture')->store('profilePictures','public');
       }
    
-=======
-      $data=$request->validated();
-      if($request->hasFile('pPicture')){
-        $data['pPicture']= $request->file('pPicture')->store('profilePictures','public');
-      }
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
       $user->update($data);
     return Responder::success($user,'success',200);
     }

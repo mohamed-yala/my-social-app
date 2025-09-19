@@ -14,11 +14,6 @@
 }
 body{
   background-color: var(--main-color);
-<<<<<<< HEAD
-
-=======
-  
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 }
 .guestLayout{
   height: 100vh;
@@ -36,10 +31,6 @@ body{
   border-radius: 10px;
   padding: 30px 30px 50px 30px;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 .auth-form input{
   padding: 12px;
   border-radius: 20px;
@@ -51,10 +42,6 @@ body{
 
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 .auth-form button{
   padding: 12px;
   border-radius: 20px;
@@ -65,7 +52,6 @@ body{
   transition: 0.3s;
   cursor: pointer;
 }
-<<<<<<< HEAD
 @media(max-width:500px){
   .auth-form{
     border: none;
@@ -80,11 +66,6 @@ body{
 }
 .auth-form button:hover{
   background-color: var(--other);
-=======
-.auth-form button:hover{
-  background-color: var(--other);
-  
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
   width: 300px;
 }
 
@@ -118,7 +99,6 @@ h1{
 .profile-img{
 width: 45px;
 height: 45px;
-<<<<<<< HEAD
 position: relative;
 border-radius: 50%;
 object-fit: cover;
@@ -140,10 +120,6 @@ min-width: 45px;
   right: 0;
   bottom: 0;
   z-index: 900;
-=======
-border-radius: 50%;
-object-fit: cover;
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 }
 .userAcc{
   display: flex;
@@ -157,7 +133,6 @@ object-fit: cover;
 .app{
  width: 61%;
  overflow-y: auto;
-<<<<<<< HEAD
  
 
 
@@ -167,13 +142,10 @@ object-fit: cover;
  width: 100%;
  
 }
-=======
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 }
 .container{
   padding: 2% 3% 0 3%;
 }
-<<<<<<< HEAD
 
 .searchRe{
   background-color: var(--other);
@@ -184,17 +156,12 @@ object-fit: cover;
 
 .searchRe input{
     padding: 12px;
-=======
-.app input{
-   padding: 12px;
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
   border-radius: 20px;
   border: none;
   outline: none;
   width: 100%;
   background-color: var(--other);
 }
-<<<<<<< HEAD
 
 
 
@@ -226,15 +193,6 @@ object-fit: cover;
 }
  
 .navbar{
-=======
-.searchRe{
-  background-color: var(--other);
-  border-radius: 20px;
-  
-}
-.navbar{
-  
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
  width: 16%;
  display: flex;
  flex-direction: column;
@@ -242,7 +200,6 @@ object-fit: cover;
  border-right:1px solid var(--other);
  padding-top: 20px;
  gap: 10px;
-<<<<<<< HEAD
  overflow-y: scroll;
  position: sticky;
  min-width: 196px;
@@ -270,11 +227,6 @@ object-fit: cover;
   .navXmark{
     color: var(--text-color);
   } 
-=======
- min-width: 192px;
- position: sticky;
- 
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
  
 }
 .menu{
@@ -342,7 +294,6 @@ object-fit: cover;
  gap: 5px;
  overflow-y: scroll;
  
-<<<<<<< HEAD
  
 }
 @media(max-width:1012px){
@@ -350,8 +301,6 @@ object-fit: cover;
     width: 100%;
     border-left: 0;
   }
-=======
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 }
 
 /*button */
@@ -473,7 +422,6 @@ object-fit: cover;
 
 .fr{
   width: 100%;
-<<<<<<< HEAD
   padding:10px 30px;
   
 
@@ -481,11 +429,6 @@ object-fit: cover;
 .userFr{
   width: 100%;
 }
-=======
-  padding: 5px 30px;
-
-}
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 .post{
   padding: 20px 40px 40px 40px;
   border: 2px solid var(--other);
@@ -494,10 +437,7 @@ object-fit: cover;
 }
 .description{
   color: #fff;
-<<<<<<< HEAD
   
-=======
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 }
 .poster{
   display: flex;
@@ -514,11 +454,7 @@ object-fit: cover;
   padding: 20px 0;
 }
 .photo img{
-<<<<<<< HEAD
   width: 100%;
-=======
-  width: 95%;
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
   
 }
 .features{
@@ -529,7 +465,6 @@ object-fit: cover;
   font-size: 22px;
   cursor: pointer;
 }
-<<<<<<< HEAD
 @media(max-width:610px){
   .post{
     padding: 0;
@@ -547,28 +482,16 @@ object-fit: cover;
 }
 
 .app::-webkit-scrollbar,.friends::-webkit-scrollbar,.navbar::-webkit-scrollbar {
-=======
-
-.app::-webkit-scrollbar,.friends::-webkit-scrollbar {
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
   display: none;
 }
 
 
-<<<<<<< HEAD
 .app,.friends,.navbar {
-=======
-.app,.friends {
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
   scrollbar-width: none;
 }
 
 
-<<<<<<< HEAD
 .app,.friends,.navbar {
-=======
-.app,.friends {
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
   -ms-overflow-style: none;
 }
 .bc p{
@@ -584,16 +507,6 @@ object-fit: cover;
   cursor: pointer;
     color: var(--text-color);
 }
-<<<<<<< HEAD
-
-=======
-.profilePic{
-  border-radius: 50%;
-  object-fit: cover;
-  width: 210px;
-  height: 210px;
-}
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 
 .followCon{
    display: flex;
@@ -684,11 +597,6 @@ object-fit: cover;
   border-radius: 8px;
   box-shadow: 0px 0px 5px -3px #111;
   position: absolute;
-<<<<<<< HEAD
-=======
-  
-  
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 }
 @keyframes slideDownAndFade {
   0% {
@@ -741,13 +649,9 @@ object-fit: cover;
   fill: #fff;
 }
 
-<<<<<<< HEAD
 /* notification */
 @media(max-width:500px){
   .followCon{
     width: 90%;
   }
 }
-=======
-/* notification */
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46

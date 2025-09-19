@@ -36,11 +36,7 @@ class PostController extends Controller
    }
     public function getAllPosts(){
 
-<<<<<<< HEAD
        $data=Post::with('user')->orderBy('created_at','desc')->orderBy('id', 'desc')->cursorPaginate(5);
-=======
-       $data=Post::with('user')->orderBy('created_at','desc')->cursorPaginate(5);
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
        return Responder::success($data,'success',200);
     }
 
@@ -93,14 +89,10 @@ class PostController extends Controller
     $comments=$post->comment()->with('user')->get();
     return Responder::success(['post'=>$post,'comments'=>$comments],'success',200);
    }
-<<<<<<< HEAD
    
    public function getNbPosts($id){
     $nb=Post::where('user_id',$id)->count();
     return Responder::success($nb,'success',200);
    }
-=======
-
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 
 }

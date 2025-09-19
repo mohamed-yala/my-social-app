@@ -3,20 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-<<<<<<< HEAD
 use Laravel\Scout\Searchable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-=======
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use Laravel\Scout\Searchable;
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 
 class User extends Authenticatable
 {
@@ -33,11 +25,7 @@ class User extends Authenticatable
         'email',
         'password',
         'bio',
-<<<<<<< HEAD
         'ppicture',
-=======
-        'pPicture',
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
         'visibility',
         'email_verified_at',
          'is_admin'
@@ -82,7 +70,6 @@ class User extends Authenticatable
     public function groups(){
        return $this->belongsToMany(Group::class,'group_users');
     }
-<<<<<<< HEAD
 
     public static function getUsersExceptUser(User $exceptUser){
      $userId=$exceptUser->id;
@@ -121,6 +108,4 @@ class User extends Authenticatable
             'ppicture'=>$this->ppicture
         ];
     }
-=======
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 }

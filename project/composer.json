@@ -11,10 +11,7 @@
     "require": {
         "php": "^8.2",
         "algolia/algoliasearch-client-php": "^4.26",
-<<<<<<< HEAD
         "inertiajs/inertia-laravel": "^2.0",
-=======
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
         "laravel/framework": "^12.0",
         "laravel/reverb": "^1.0",
         "laravel/sanctum": "^4.0",
@@ -24,10 +21,7 @@
         "teamtnt/laravel-scout-tntsearch-driver": "^15.0"
     },
     "require-dev": {
-<<<<<<< HEAD
         "barryvdh/laravel-debugbar": "^3.16",
-=======
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
         "fakerphp/faker": "^1.23",
         "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.13",
