@@ -1,0 +1,46 @@
+
+.messageCon{
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    color: #fff;
+    padding: 2px;
+   
+    
+    
+}
+.right{
+    justify-content: end;
+}
+
+
+.chat-img{
+width: 35px;
+height: 35px;
+border-radius: 50%;
+object-fit: cover;
+}
+
+.msg{
+    background-color: #262626;
+    padding: 10px;
+    /* border-radius: 10px 10px 0px 5px; */
+    border-radius: 5px 10px 10px 0px;
+    word-wrap: break-word;   /* older browsers */
+  overflow-wrap: break-word; /* modern browsers */
+  white-space: normal;
+  max-width: 70%;
+   
+}
+.right-color{
+    background-color: #3797F0;
+}
+.pictureDown{
+  margin-top: 20px;
+}
+.user-name{
+font-size:14px ;
+padding: 2px;
+margin-left: 3px;
+
+}

@@ -1,0 +1,105 @@
+:root{
+  --main-color:#2D3142;
+  --text-color:#ADACB5;
+  --other:#D8D5DB;
+}
+
+.add{
+    background-color:var(--main-color);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+
+.postForm{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    background-color:  var(--main-color);
+    border: 2px solid var(--other);
+    border-radius: 10px;
+    padding: 20px;
+    gap: 20px;
+    width: 350px;
+}
+.postHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;  
+    margin-bottom: 3px;
+}
+.postHeader p{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+#inptFile{
+    display: none;
+}
+.addPhotoBtn{
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background-color: var(--text-color);
+  cursor: pointer;
+  font-size: 13px;
+}
+.add textarea{
+    outline: none;
+    width: 100%;
+    resize: none;
+    background-color: var(--other);
+    padding: 10px 10px 50px 10px;
+    border-radius: 10px;
+    height: 100px !important;
+}
+.add input{
+    outline: none;
+    width: 100%;
+    background-color: var(--other);
+    padding: 10px;
+    border-radius: 10px;
+    border:none ;
+}
+.add button{
+  margin: 0 auto;
+  padding: 12px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  width: 100px;
+  background-color: var(--text-color);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.add button:hover{
+  background-color: var(--other);
+  width: 90%;
+}
+.xmark{
+    color: var(--text-color);
+    cursor: pointer;
+}
+@media(max-width:500px){
+ .postForm{
+  width: 90%;
+ 
+  position: absolute;
+  
+ 
+ }
+}

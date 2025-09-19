@@ -1,0 +1,128 @@
+
+:root{
+  --main-color:#2D3142;
+  --text-color:#ADACB5;
+  --other:#D8D5DB;
+}
+
+.chat{
+   
+  padding: 10px 2%;
+  width: 61%;
+  
+}
+.chatLyout{
+      border: 2px solid var(--other);
+      border-radius: 20px;
+      height: 88%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+     
+     
+      
+}
+@media(max-width:850px){
+  .chat{
+   display: flex;
+   flex-direction: column;
+  align-items: end;
+
+  
+  }
+  .chatLyout{
+    width: 100%;
+   
+  }
+  .chatSearch{
+   width: 100%;
+  position: static;
+  
+  }
+  .chatSearch .elemCon{
+   display: flex;
+   justify-content: none;
+   width: 100%;
+   
+  }
+  .chatSearch input{
+    width: 95% !important;
+    
+   
+  }
+  .chatSearch .bars{
+    width: 5%;
+  }
+ 
+   
+  
+}
+.chatUser{
+    padding: 10px 20px 5px 20px;
+    border-bottom: 1px solid var(--other);
+    
+}
+.chat form{
+ width: 96%;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 2px 2px 2px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+ 
+
+}
+.chat input{
+    width: 88%;
+  border: none;
+  outline: none;
+ 
+ 
+}
+
+.send{
+  background-color:var(--main-color);
+  color: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.messagesUser{
+  display: flex;
+  flex-direction: column;
+ 
+  padding: 10px;
+  overflow-y: scroll;
+  height: 100%;
+  
+  
+ 
+}
+.messagesUser::-webkit-scrollbar {
+  display: none;
+}
+.emoji{
+  color: var(--main-color);
+  font-size: 20px;
+  cursor: pointer;
+ 
+}
+.emojiesCon{
+ 
+ position: absolute;
+ bottom: 55px;
+
+  
+}
+
+@media(max-width:1012px){
+ .chat{
+  width: 100%;
+ }
+}
