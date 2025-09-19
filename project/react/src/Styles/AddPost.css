@@ -30,7 +30,11 @@
     border-radius: 10px;
     padding: 20px;
     gap: 20px;
+<<<<<<< HEAD
     width: 350px;
+=======
+    width: 30%;
+>>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 }
 .postHeader{
     display: flex;
@@ -94,6 +98,7 @@
     color: var(--text-color);
     cursor: pointer;
 }
+<<<<<<< HEAD
 @media(max-width:500px){
  .postForm{
   width: 90%;
@@ -103,3 +108,6 @@
  
  }
 }
+=======
+
+>>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46

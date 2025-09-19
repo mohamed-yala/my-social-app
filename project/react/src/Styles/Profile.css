@@ -1,7 +1,10 @@
 .userProfile{
  width: 61%;
  overflow-y: auto;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 }
 
 
@@ -23,6 +26,7 @@
     display: flex;
     gap: 40px;
     align-items: center;
+<<<<<<< HEAD
   
 }
 .profilePic{
@@ -36,18 +40,30 @@
  
 }
 
+=======
+}
+>>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 .profileCon label{
     color: var(--text-color);
     display: flex;
     gap: 10px;
     cursor: pointer;
+<<<<<<< HEAD
     
+=======
+>>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 }
 .profileCon form{
     display: flex;
     gap: 10px;
 }
+<<<<<<< HEAD
 
+=======
+.profileCon img{
+    width: 30%;
+}
+>>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 .profileInfo{
     display: flex;
     flex-direction: column;
@@ -85,6 +101,7 @@
 .bio{
     color: var(--text-color);
     font-size: 17px;
+<<<<<<< HEAD
 }
 
 
@@ -153,4 +170,6 @@
     .activity p{
     font-size: 12px;
   }
+=======
+>>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 }

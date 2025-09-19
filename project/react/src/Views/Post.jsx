@@ -36,9 +36,15 @@ function Post({post,liked,visitProfile}) {
     <div className='post'>
         
         <div className='poster'>
+<<<<<<< HEAD
           {post.user.ppicture==='847969.png' ?
             <img onClick={()=>visitProfile(post.user)} className='profile-img'  src='/assets/847969.png' /> :
             <img onClick={()=>visitProfile(post.user)} className='profile-img' src={`${import.meta.env.VITE_API_BASE_URL}/storage/${post.user.ppicture}`}  />
+=======
+          {post.user.pPicture==='847969.png' ?
+            <img onClick={()=>visitProfile(post.user)} className='profile-img'  src='/assets/847969.png' /> :
+            <img onClick={()=>visitProfile(post.user)} className='profile-img' src={`${import.meta.env.VITE_API_BASE_URL}/storage/${post.user.pPicture}`}  />
+>>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
          }
            
             <p onClick={()=>visitProfile(post)}>{post.user.name}</p>

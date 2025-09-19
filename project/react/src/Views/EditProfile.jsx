@@ -26,7 +26,11 @@ function EditProfile() {
        e.preventDefault()    
       const formData=new FormData()
       if(imageRef.current.files[0]){
+<<<<<<< HEAD
        formData.append('ppicture',imageRef.current.files[0])
+=======
+       formData.append('pPicture',imageRef.current.files[0])
+>>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
       }
        formData.append('name',name)
        formData.append('bio',bio)
@@ -59,12 +63,20 @@ function EditProfile() {
          <div className='porp'>
                 <label className="radio-container">Public
                  <input  onChange={()=>setChoice('public')} checked={choice==='public'} type="radio" name="choice" />
+<<<<<<< HEAD
                  <span className="checkmark"></span>
+=======
+                 <span class="checkmark"></span>
+>>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
               </label>
 
               <label  className="radio-container">Private
                   <input onChange={()=>setChoice('private')} checked={choice==='private'} type="radio" name="choice"/>
+<<<<<<< HEAD
                   <span className="checkmark"></span>
+=======
+                  <span class="checkmark"></span>
+>>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
              </label>
         </div>
        

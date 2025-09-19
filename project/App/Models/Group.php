@@ -18,6 +18,7 @@ class Group extends Model
     public function users(){
        return $this->belongsToMany(User::class,'group_users');
     }
+<<<<<<< HEAD
     public function messages(){
         return $this->hasMany(Message::class);
     }
@@ -51,4 +52,6 @@ class Group extends Model
         ];
     }
     
+=======
+>>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 }

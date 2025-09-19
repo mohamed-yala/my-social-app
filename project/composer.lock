@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "7c282a7bf8b8cb764a167f57a117d01d",
+=======
+    "content-hash": "30b54dd3263c21f93d9d7b3fd242d96a",
+>>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -1299,6 +1303,7 @@
             "time": "2025-02-03T10:55:03+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "inertiajs/inertia-laravel",
             "version": "v2.0.5",
             "source": {
@@ -1369,6 +1374,8 @@
             "time": "2025-08-12T15:57:22+00:00"
         },
         {
+=======
+>>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
             "name": "laravel/framework",
             "version": "v12.21.0",
             "source": {
@@ -7415,6 +7422,7 @@
     ],
     "packages-dev": [
         {
+<<<<<<< HEAD
             "name": "barryvdh/laravel-debugbar",
             "version": "v3.16.0",
             "source": {
@@ -7500,6 +7508,8 @@
             "time": "2025-07-14T11:56:43+00:00"
         },
         {
+=======
+>>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
             "name": "fakerphp/faker",
             "version": "v1.24.1",
             "source": {
@@ -8256,6 +8266,7 @@
             "time": "2022-02-21T01:04:05+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "php-debugbar/php-debugbar",
             "version": "v2.2.4",
             "source": {
@@ -8329,6 +8340,8 @@
             "time": "2025-07-22T14:01:30+00:00"
         },
         {
+=======
+>>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
             "name": "phpunit/php-code-coverage",
             "version": "11.0.10",
             "source": {

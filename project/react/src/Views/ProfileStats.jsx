@@ -11,7 +11,10 @@ function ProfileStats({window}) {
    
     const {setToggle,setMove}=useStateContext()
     const [users,setUsers]=useState([])
+<<<<<<< HEAD
     const [nbPosts,setNbPosts]=useState(0)
+=======
+>>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
     const {id}=useParams()
 
    const removeForm=()=>{
@@ -30,9 +33,15 @@ function ProfileStats({window}) {
         axiosClient.get(`/following/${id}`)
         .then(({data})=>{
             setUsers(data.data)
+<<<<<<< HEAD
         })
     }
     
+=======
+            console.log(data.data)
+        })
+    }
+>>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
    },[])
 
     const navigate =useNavigate()
@@ -52,9 +61,15 @@ function ProfileStats({window}) {
 
               {users.map((elem)=>(
                   <div key={elem.id}  className='people'>
+<<<<<<< HEAD
                     {elem.ppicture==='847969.png'?
                       <img onClick={()=>visitProfile(elem)} className='profile-img' src='/assets/847969.png'/> :
                       <img onClick={()=>visitProfile(elem)} className='profile-img' src={`${import.meta.env.VITE_API_BASE_URL}/storage/${elem.ppicture}`}/> 
+=======
+                    {elem.pPicture==='847969.png'?
+                      <img onClick={()=>visitProfile(elem)} className='profile-img' src='/assets/847969.png'/> :
+                      <img onClick={()=>visitProfile(elem)} className='profile-img' src={`${import.meta.env.VITE_API_BASE_URL}/storage/${elem.pPicture}`}/> 
+>>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
                     }
                     <p>{elem.name}</p>
                   </div>

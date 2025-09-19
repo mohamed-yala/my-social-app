@@ -23,7 +23,11 @@ class EditRequest extends FormRequest
     {
         return [
             'name'=>'required|string',
+<<<<<<< HEAD
             'ppicture'=>'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+=======
+            'pPicture'=>'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+>>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
             'bio'=>'nullable|string',
             'visibility'=>'required|string'
         ];
