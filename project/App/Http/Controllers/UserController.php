@@ -29,7 +29,7 @@ class UserController extends Controller
     public function searchUsers(SearchRequest $request){
      
        $validated=$request->validated();
-       $data=User::search($validated['search'])->get();
+       $data=User::where('name','like','%' . $validated['search'] . '%')->get();
       return  Responder::success($data,'success',200);
     }
 
