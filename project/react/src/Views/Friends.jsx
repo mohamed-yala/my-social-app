@@ -7,26 +7,19 @@ import axiosClient from '../axios-client'
 import { useRef } from 'react'
 import { useStateContext } from '../contexts/ContextProvider'
 import { useNavigate} from 'react-router-dom'
-<<<<<<< HEAD
+
 import echo from '../echo'
-=======
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
+
 
     
 
 
 function Friends() {
-<<<<<<< HEAD
-  
-=======
- 
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
-  const [users,setUsers]=useState([])
+       const [users,setUsers]=useState([])
   const [showMore,setShowMore]=useState(true)
   const cursor=useRef(null)
   const firstUsers=useRef([])
-  const firstCursor=useRef(null)
-<<<<<<< HEAD
+ const firstCursor=useRef(null)
   const [onlineUsers,setOnlineUsers]=useState({})
   const [localConversations,setLocalConversations]=useState([])
   const {user,setNewMessage,setErr,setShowErr}=useStateContext()
@@ -86,7 +79,7 @@ function Friends() {
       .error((error)=>{
         console.error(error)
       }).listen("SocketMessage",(e)=>{
-         console.log("SocketMessage",e)
+        
        
          setNewMessage(e)
          
@@ -113,12 +106,7 @@ function Friends() {
 
    useEffect(()=>{
     setShowErr(false)
-=======
-   
-
-   useEffect(()=>{
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
-     axiosClient.get('/users')
+    axiosClient.get('/users')
      .then(({data})=>{
        setUsers(data.data.data.map((elem)=>({...elem,follow:false})))
        firstUsers.current=data.data.data
@@ -133,8 +121,7 @@ function Friends() {
    }
 
    const addSuggestions=()=>{
-<<<<<<< HEAD
-    
+   
      if(cursor.current===null && users.length<=4){
       
       setShowErr(false)
@@ -145,11 +132,7 @@ function Friends() {
       setShowErr(true);
     }, 50);
 
-=======
-     if(cursor.current===null && users.length<=4){
-      console.log('no more users')
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
-     }else{
+    }else{
 
 
      axiosClient.get('/users',{
@@ -169,34 +152,23 @@ function Friends() {
       }
      })
     }
-<<<<<<< HEAD
-     
-=======
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
+       
    }
 
    const follow=(user)=>{
      setUsers(users.map((elem)=>(elem.id===user.id ? {...elem,follow:!elem.follow}:elem))) 
      axiosClient.post(`/follower/${user.id}`)
    }
-
-<<<<<<< HEAD
-  const goToChat=(user)=>{
+ const goToChat=(user)=>{
     return navigate(`Chat/${user.id}`)
   }
-=======
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
 
 
 
   return (
     <div className='friends'>
-<<<<<<< HEAD
        {window.innerWidth>1012 &&
        <>
-=======
-
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
         <p className='friend-title'>
             Suggested for you
         </p>
@@ -208,11 +180,7 @@ function Friends() {
                <div className='userAcc'>
                 {elem.ppicture==='847969.png' ?
                 <img onClick={()=>visitProfile(elem)} className='profile-img' src='/assets/847969.png'/> :
-<<<<<<< HEAD
                  <img onClick={()=>visitProfile(elem)} className='profile-img' src={`${import.meta.env.VITE_API_BASE_URL}/storage/${elem.ppicture}`}/> 
-=======
-                 <img onClick={()=>visitProfile(elem)} className='profile-img' src={`${import.meta.env.VITE_API_BASE_URL}/storage/${elem.pPicture}`}/> 
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
                 }  
                   <p onClick={()=>visitProfile(elem)}>{elem.name}</p>
                </div>
@@ -277,16 +245,11 @@ function Friends() {
             <FontAwesomeIcon className='icon' icon={faCaretDown}/>
             <p>{showMore ? 'More': 'Less'}</p>
         </div>
-<<<<<<< HEAD
         </>}   
-=======
-        
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
          <p className='friend-title'>
             Friends
         </p>
 
-<<<<<<< HEAD
         
        
         <div className='userFr'>
@@ -312,32 +275,6 @@ function Friends() {
         </div>
 
         
-=======
-         <div className='userAcc boton-elegante fr'>
-            <img className='profile-img' src='/assets/847969.png'/> 
-            <p>Mohamed Yala</p>
-        </div>
-       
-         <div className='userAcc boton-elegante fr'>
-            <img className='profile-img' src='/assets/847969.png'/> 
-            <p>Mohamed Yala</p>
-        </div>
-       
-         <div className='userAcc boton-elegante fr'>
-            <img className='profile-img' src='/assets/847969.png'/> 
-            <p>Mohamed Yala</p>
-        </div>
-       
-         <div className='userAcc boton-elegante fr'>
-            <img className='profile-img' src='/assets/847969.png'/> 
-            <p>Mohamed Yala</p>
-        </div>
-
-         <div className='more'>
-            <FontAwesomeIcon className='icon' icon={faCaretDown}/>
-            <p>More</p>
-        </div>
->>>>>>> 58ab41b7b00d7cfeea4259355541f12053622f46
        
     </div>
   )
